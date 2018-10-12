@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.VisitorDao">
+    <insert id="saveVisitor" parameterType="Visitor">
+        INSERT INTO visitor(name,password) VALUES(#{name},#{password});
+    </insert>
+
+    <select id="findVisitor" resultType="Visitor">
+        SELECT * FROM visitor WHERE name=#{0} AND password=#{1};
+    </select>
+
+    <select id="findAllVisitor" resultType="Visitor">
+        SELECT * FROM visitor;
+    </select>
+
+    <select id="findVisitorByName" parameterType="String" resultType="Visitor">
+        SELECT * FROM visitor WHERE name=#{name};
+    </select>
+</mapper>
