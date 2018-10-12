@@ -53,4 +53,15 @@ public class VisitorControl {
             return "789";
         }
     }
+
+    @RequestMapping("nameVerify")
+    @ResponseBody
+    public String nameVerify(String name){
+        Visitor visitor=visitorServ.findVisitorByName(name);
+        if(visitor==null){
+            return "123";
+        }else {
+            return "456";
+        }
+    }
 }

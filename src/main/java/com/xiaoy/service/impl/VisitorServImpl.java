@@ -27,4 +27,8 @@ public class VisitorServImpl implements VisitorServ {
     public List<Visitor> findAllVisitor() {
         return visitorDao.findAllVisitor();
     }
+
+    public Visitor findVisitorByName(String name) {
+        return visitorDao.findVisitorByName(name);
+    }
 }

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.PositionDao">
+
+    <insert id="savePosition" parameterType="Position">
+        INSERT INTO position(name,crea_time,department_id) VALUES(#{name},#{creaTime},#{departmentId});
+    </insert>
+
+    <update id="updatePosition">
+        UPDATE position set name=#{1} WHERE id=#{0};
+    </update>
+
+    <delete id="delPosition" parameterType="int">
+        DELETE FROM position WHERE id=#{id};
+    </delete>
+
+    <select id="findPositionById" resultType="Position">
+        SELECT * FROM position WHERE id=#{id};
+    </select>
+
+    <select id="findAllPosition" resultType="Position">
+        SELECT * FROM position;
+    </select>
+
+    <select id="findPositionByName" resultType="Position">
+        SELECT * FROM position WHERE name=#{1} AND department_id=#{0};
+    </select>
+
+    <select id="findPositionByDepartmentId" resultType="Position">
+        SELECT * FROM position WHERE department_id=#{departmentId}
+    </select>
+</mapper>

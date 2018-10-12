@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.PayDao">
+
+    <insert id="savePay" parameterType="Pay">
+        INSERT INTO pay(pay_time,base_pay,performance_bonus,overtime_pay,prize_pay,social_security,employee_id) VALUES(
+        #{payTime},#{basePay},#{performanceBonus},#{overtimePay},#{prizePay},#{socialSecurity},#{employeeId});
+    </insert>
+
+    <select id="findPayByEmployeeId" parameterType="int" resultType="Pay">
+        SELECT * FROM pay WHERE employee_id=#{employeeId};
+    </select>
+
+    <select id="findAllPay" resultType="Pay">
+        SELECT * FROM pay;
+    </select>
+</mapper>

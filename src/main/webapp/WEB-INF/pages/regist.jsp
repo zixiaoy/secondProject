@@ -24,12 +24,34 @@
             left:43%;
         }
     </style>
+    <script>
+        $(function(){
+            $("#span").hide();
+            $("#exampleInputEmail3").blur(function(){
+                var name=$(this).val();
+                $.ajax({
+                    url:"nameVerify",
+                    type:"post",
+                    dataType:"text",
+                    data:{"name":name},
+                    success:function(data){
+                        if(data=="123"){
+                            $("#span").hide();
+                        }else {
+                            $("#span").show();
+                        }
+                    }
+                })
+            })
+        })
+    </script>
 </head>
 <body>
     <form class="form-inline" action="regist.do">
         <div class="form-group">
             <label class="sr-only" for="exampleInputEmail3">用户名</label>
             <input type="text" name="name" class="form-control" id="exampleInputEmail3" placeholder="用户名">
+            <span id="span" style="color:red">* 用户名已存在！！！</span>
         </div><br>
         <div class="form-group">
             <label class="sr-only" for="exampleInputPassword3">Password</label>

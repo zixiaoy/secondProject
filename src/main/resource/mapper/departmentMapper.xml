@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.DepartmentDao">
+    <insert id="saveDepartment" parameterType="Department">
+        INSERT INTO department(name,crea_time) VALUES(#{name},#{creaTime});
+    </insert>
+
+    <update id="updateDepartment">
+        UPDATE department set name=#{1} WHERE id=#{0};
+    </update>
+
+    <delete id="delDepartment" parameterType="int">
+        DELETE FROM department WHERE id=#{id};
+    </delete>
+
+    <select id="findDepartmentById" resultType="Department">
+        SELECT * FROM department WHERE id=#{id};
+    </select>
+
+    <select id="findAllDepartment" resultType="Department">
+        SELECT * FROM department;
+    </select>
+
+    <select id="findDepartmentByName" parameterType="String" resultType="Department">
+        SELECT * FROM department WHERE name=#{name};
+    </select>
+</mapper>
