@@ -2,6 +2,7 @@ package com.xiaoy.handler;
 
 import com.xiaoy.entity.Visitor;
 import com.xiaoy.service.VisitorServ;
+import com.xiaoy.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,27 +22,49 @@ public class VisitorControl {
         return "regist";
     }
 
+    @RequestMapping("resetPasswords")
+    public String resetPasswords(){
+        return "resetPasswords";
+    }
+
+    @RequestMapping("resetVerify")
+    @ResponseBody
+    public String resetVerify(int id,String name){
+        Visitor visitor=visitorServ.findVisitorByName(name);
+        if(visitor!=null&&visitor.getId()==id){
+            return "123";
+        }else {
+            return "456";
+        }
+    }
+
+    @RequestMapping("resetPasswords.do")
+    public String resetPasswords(Visitor visitor){
+        visitorServ.updateVisitor(visitor);
+        return "edit";
+    }
+
     @RequestMapping("regist.do")
     public String registVisitor(Visitor visitor){
         visitorServ.saveVisitor(visitor);
-        return "forward:/pages/login.jsp";
+        return "edit";
     }
 
     @RequestMapping("findVisitor")
     public String findVisitor(Visitor visitor){
+        visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
         if(visitor1!=null){
-            System.out.println("you");
-            return "";
+            return "visitorPage";
         }else {
-            System.out.println("wu");
-            return "";
+            return "visitorPage";
         }
     }
 
     @RequestMapping("loginVerify")
     @ResponseBody
     public String loginVerify(String name,String password){
+        password=MD5.md5(password);
         Visitor visitor=visitorServ.findVisitor(name,password);
         if(visitor==null){
             if(name==""||password==""){

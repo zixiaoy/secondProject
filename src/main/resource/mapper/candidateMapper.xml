@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.CandidateDao">
+
+    <insert id="saveCandidate" parameterType="Candidate">
+        INSERT INTO candidate(visitor_id,crea_time,status,interview) VALUES(#{visitorId},#{creaTime},#{status},#{interview});
+    </insert>
+
+    <update id="updateCandidate">
+        UPDATE candidate SET status=#{1},interview=#{2} WHERE id=#{0};
+    </update>
+
+    <delete id="delCandidate" parameterType="int">
+        DELETE FROM candidate WHERE id=#{id};
+    </delete>
+
+    <select id="findCandidateByStatus" resultType="Candidate">
+        SELECT * FROM candidate WHERE status=#{status};
+    </select>
+
+    <select id="findCandidateByInterview" resultType="Candidate">
+        SELECT * FROM candidate WHERE interview=#{interview};
+    </select>
+
+    <select id="findCandidateByCreaTime" resultType="Candidate">
+        SELECT * FROM candidate WHERE crea_time LIKE CONCAT('%',#{creaTime},'%');
+    </select>
+
+    <select id="findCandidateAll" resultType="Candidate">
+        SELECT * FROM candidate;
+    </select>
+</mapper>

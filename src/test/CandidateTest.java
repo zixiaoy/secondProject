@@ -1,4 +1,4 @@
-import com.xiaoy.service.CultivateServ;
+import com.xiaoy.service.CandidateServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,18 +7,17 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import java.util.Date;
 
-
 /**
  * Created by 紫青 on 2018/10/12.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")
-public class CultivateTest {
+public class CandidateTest {
     @Autowired
-    private CultivateServ cultivateServ;
+    private CandidateServ candidateServ;
 
     @Test
-    public void testFindCultivateByDepartmentId(){
-        System.out.println(cultivateServ.findCultivateByCultivateTime(new Date()));
+    public void testFindCandidateByCreaTime(){
+        System.out.println(candidateServ.findCandidateByCreaTime(new Date()));
     }
 }

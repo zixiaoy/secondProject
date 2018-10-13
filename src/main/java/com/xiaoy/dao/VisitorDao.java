@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface VisitorDao {
     public boolean saveVisitor(Visitor visitor);
+    public boolean updateVisitor(Visitor visitor);
+    public boolean delVisitor(int id);
     public Visitor findVisitor(String name,String password);
     public List<Visitor> findAllVisitor();
     public Visitor findVisitorByName(String name);

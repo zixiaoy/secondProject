@@ -22,7 +22,16 @@ public class VisitorServImpl implements VisitorServ {
         return visitorDao.saveVisitor(visitor);
     }
 
-    public Visitor findVisitor(String name,String password) {
+    public boolean updateVisitor(Visitor visitor) {
+        visitor.setPassword(MD5.md5(visitor.getPassword()));
+        return visitorDao.updateVisitor(visitor);
+    }
+
+    public boolean delVisitor(int id) {
+        return visitorDao.delVisitor(id);
+    }
+
+    public Visitor findVisitor(String name, String password) {
         return visitorDao.findVisitor(name,password);
     }
 

@@ -2,6 +2,7 @@ package com.xiaoy.service;
 
 import com.xiaoy.entity.Cultivate;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -15,5 +16,5 @@ public interface CultivateServ {
     public List<Cultivate> findCultivateByDepartmentId(int departmentId);
     public List<Cultivate> findCultivateByPositionId(int positionId);
     public List<Cultivate> findCultivateByEmployeeId(int employeeId);
-    public List<Cultivate> findCultivateByCultivateTime(String cultivateTime);
+    public List<Cultivate> findCultivateByCultivateTime(Date cultivateTime);
 }

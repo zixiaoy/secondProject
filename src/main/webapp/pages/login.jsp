@@ -1,36 +1,32 @@
 <%--
   Created by IntelliJ IDEA.
   User: 紫青
-  Date: 2018/10/11
-  Time: 15:17
+  Date: 2018/10/13
+  Time: 13:31
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
+<html >
 <head>
-    <title>登陆</title>
-    <link rel="stylesheet" href="/bootstrap/css/bootstrap.min.css">
-    <script src="/js/jquery-1.10.2.min.js"></script>
-    <script src="/bootstrap/js/bootstrap.min.js"></script>
-    <style>
-        body{
-            background:url(/image/image2.jpg);
-            background-position: center 0;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            background-size: cover;
-            position: absolute;
-            top: 30%;
-            left:43%;
-        }
-    </style>
+    <title>登录页面</title>
+
+    <link rel="stylesheet" type="text/css" href="/plugIn/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/css/main.css">
+
+    <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/plugIn/js/main.js"></script>
+
     <script>
         $(function(){
             $("#span").hide();
-            $("#sub").attr("disabled",true);
-            $(".form-control").blur(function(){
-                var name=$("#exampleInputEmail3").val();
-                var password=$("#exampleInputPassword3").val();
+            $("button").attr("disabled",true);
+            $(".input100").blur(function(){
+                var name=$(":text").val();
+                var password=$(":password").val();
                 $.ajax({
                     url:"loginVerify",
                     type:"post",
@@ -39,13 +35,13 @@
                     success:function(data){
                         if(data=="123"){
                             $("#span").hide();
-                            $("#sub").attr("disabled",true);
+                            $("button").attr("disabled",true);
                         }else if(data==456){
                             $("#span").show();
-                            $("#sub").attr("disabled",true);
+                            $("button").attr("disabled",true);
                         }else {
                             $("#span").hide();
-                            $("#sub").attr("disabled",false);
+                            $("button").attr("disabled",false);
                         }
                     }
                 })
@@ -54,24 +50,46 @@
     </script>
 </head>
 <body>
-    <form class="form-inline" action="findVisitor">
-        <div class="form-group">
-            <label class="sr-only" for="exampleInputEmail3">用户名</label>
-            <input type="text" name="name" class="form-control" id="exampleInputEmail3" placeholder="用户名">
-        </div><br>
-        <div class="form-group">
-            <label class="sr-only" for="exampleInputPassword3">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword3" placeholder="Password">
-        </div><br>
-        <div class="checkbox">
-            <label>
-                <input type="checkbox">记住我
-            </label>
-        </div><br>
-        <p style="color:red" id="span">* 用户名或密码错误！！！</p>
-        <button type="submit" class="btn btn-primary" id="sub" style="width: 95px">登录</button>
-        <button type="button" onclick="window.open('regist')" class="btn btn-info" style="width: 95px">注册</button>
-    </form>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/plugIn/images/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form" action="findVisitor" method="post">
+                    <span class="login100-form-title p-b-49">登录</span>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="请输入用户名">
+                        <span class="label-input100">用户名</span>
+                        <input class="input100" type="text" name="name" placeholder="请输入用户名" autocomplete="off">
+                        <span class="focus-input100" data-symbol="&#xf206;"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input" data-validate="请输入密码">
+                        <span class="label-input100">密码</span>
+                        <input class="input100" type="password" name="password" placeholder="请输入密码">
+                        <span class="focus-input100" data-symbol="&#xf190;"></span>
+                    </div>
+
+                    <div class="text-left p-t-8 p-b-31">
+                        <span style="color:red" id="span">* 用户名或密码错误！！！</span>
+                    </div>
+
+                    <div class="text-right p-t-8 p-b-31">
+                        <a href="resetPasswords">忘记密码？</a>
+                    </div>
+
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button type="submit" class="login100-form-btn">登 录</button>
+                        </div>
+                    </div>
+
+                    <div class="flex-col-c p-t-25">
+                        <a href="regist" class="txt2">立即注册</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
-

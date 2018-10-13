@@ -3,6 +3,7 @@ package com.xiaoy.dao;
 import com.xiaoy.entity.Cultivate;
 import org.springframework.stereotype.Repository;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -17,5 +18,5 @@ public interface CultivateDao {
     public List<Cultivate> findCultivateByDepartmentId(int departmentId);
     public List<Cultivate> findCultivateByPositionId(int positionId);
     public List<Cultivate> findCultivateByEmployeeId(int employeeId);
-    public List<Cultivate> findCultivateByCultivateTime(String cultivateTime);
+    public List<Cultivate> findCultivateByCultivateTime(Date cultivateTime);
 }

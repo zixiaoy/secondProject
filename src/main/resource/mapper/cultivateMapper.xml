@@ -33,6 +33,6 @@
     </select>
 
     <select id="findCultivateByCultivateTime" resultType="Cultivate">
-        SELECT * FROM cultivate WHERE cultivate_time like #{cultivateTime};
+        SELECT * FROM cultivate WHERE cultivate_time like CONCAT('%',#{cultivateTime},'%');
     </select>
 </mapper>

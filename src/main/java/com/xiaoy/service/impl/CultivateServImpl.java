@@ -6,6 +6,7 @@ import com.xiaoy.service.CultivateServ;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -44,7 +45,7 @@ public class CultivateServImpl implements CultivateServ{
         return cultivateDao.findCultivateByEmployeeId(employeeId);
     }
 
-    public List<Cultivate> findCultivateByCultivateTime(String cultivateTime) {
+    public List<Cultivate> findCultivateByCultivateTime(Date cultivateTime) {
         return cultivateDao.findCultivateByCultivateTime(cultivateTime);
     }
 }

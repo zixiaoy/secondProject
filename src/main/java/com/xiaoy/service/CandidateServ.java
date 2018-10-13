@@ -1,7 +1,6 @@
-package com.xiaoy.dao;
+package com.xiaoy.service;
 
 import com.xiaoy.entity.Candidate;
-import org.springframework.stereotype.Repository;
 
 import java.util.Date;
 import java.util.List;
@@ -9,8 +8,7 @@ import java.util.List;
 /**
  * Created by 紫青 on 2018/10/13.
  */
-@Repository
-public interface CandidateDao {
+public interface CandidateServ {
     public boolean saveCandidate(Candidate candidate);
     public boolean updateCandidate(int id,int status,int interview);
     public boolean delCandidate(int id);

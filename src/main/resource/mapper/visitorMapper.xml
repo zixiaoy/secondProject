@@ -5,6 +5,14 @@
         INSERT INTO visitor(name,password) VALUES(#{name},#{password});
     </insert>
 
+    <update id="updateVisitor" parameterType="Visitor">
+        UPDATE visitor SET password=#{password} WHERE id=#{id} AND name=#{name};
+    </update>
+
+    <delete id="delVisitor" parameterType="int">
+        DELETE FROM visitor WHERE id=#{id};
+    </delete>
+
     <select id="findVisitor" resultType="Visitor">
         SELECT * FROM visitor WHERE name=#{0} AND password=#{1};
     </select>

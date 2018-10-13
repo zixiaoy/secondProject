@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.FeedbackDao">
+
+    <insert id="saveFeedback" parameterType="Feedback">
+        INSERT INTO feedback(recruit_id,crea_time,status,interview,interview_time,admit) VALUES(
+        #{recruitId},#{creaTime},#{status},#{interview},#{interviewTime},#{admit});
+    </insert>
+
+    <update id="updateFeedback">
+        UPDATE feedback SET status=#{1},interview=#{2},admit=#{3} WHERE id=#{0};
+    </update>
+
+    <delete id="delFeedback" parameterType="int">
+        DELETE FROM feedback WHERE id=#{id};
+    </delete>
+
+    <select id="findFeedbackByStatus" resultType="Feedback">
+        SELECT * FROM feedback WHERE status=#{status};
+    </select>
+
+    <select id="findFeedbackByInterview" resultType="Feedback">
+        SELECT * FROM feedback WHERE interview=#{interview};
+    </select>
+
+    <select id="findFeedbackByAdmit" resultType="Feedback">
+        SELECT * FROM feedback WHERE admit=#{admit};
+    </select>
+
+    <select id="findFeedbackByCreaTime" resultType="Feedback">
+        SELECT * FROM feedback WHERE crea_time=#{creaTime};
+    </select>
+
+    <select id="findFeedbackByInterviewTime" resultType="Feedback">
+        SELECT * FROM feedback WHERE interview_time=#{interviewTime};
+    </select>
+
+    <select id="findFeedbackAll" resultType="Feedback">
+        SELECT * FROM feedback;
+    </select>
+</mapper>
