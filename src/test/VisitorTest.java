@@ -1,4 +1,6 @@
+import com.xiaoy.entity.Visitor;
 import com.xiaoy.service.VisitorServ;
+import com.xiaoy.util.MD5;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,5 +19,16 @@ public class VisitorTest {
     @Test
     public void testFindAllVisitor(){
         System.out.println(visitorServ.findAllVisitor());
+    }
+
+    @Test
+    public void testSaveVisitor(){
+        System.out.println(visitorServ.saveVisitor(new Visitor("123","123")));
+    }
+
+    @Test
+    public void testFindVisitor(){
+        String password= MD5.md5("123");
+        System.out.println(visitorServ.findVisitor("123",password));
     }
 }

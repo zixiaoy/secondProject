@@ -3,6 +3,7 @@ package com.xiaoy.service.impl;
 import com.xiaoy.dao.VisitorDao;
 import com.xiaoy.entity.Visitor;
 import com.xiaoy.service.VisitorServ;
+import com.xiaoy.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +18,7 @@ public class VisitorServImpl implements VisitorServ {
     private VisitorDao visitorDao;
 
     public boolean saveVisitor(Visitor visitor) {
+        visitor.setPassword(MD5.md5(visitor.getPassword()));
         return visitorDao.saveVisitor(visitor);
     }
 

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.CultivateDao">
+
+    <insert id="saveCultivate" parameterType="Cultivate">
+        INSERT INTO cultivate(name,crea_time,cultivate_time,department_id,position_id,employee_id) VALUES(
+        #{name},#{creaTime},#{cultivateTime},#{departmentId},#{positionId},#{employeeId});
+    </insert>
+
+    <update id="updateCultivate" parameterType="Cultivate">
+        UPDATE cultivate SET name=#{name},cultivate_time=#{cultivateTime},department_id=#{departmentId},
+        position_id=#{positionId},employee_id=#{employeeId} WHERE id=#{id};
+    </update>
+
+    <delete id="delCultivate" parameterType="int">
+        DELETE FROM cultivate WHERE id=#{id};
+    </delete>
+
+    <select id="findCultivateById" resultType="Cultivate">
+        SELECT * FROM cultivate WHERE id=#{id};
+    </select>
+
+    <select id="findCultivateByDepartmentId" resultType="Cultivate">
+        SELECT * FROM cultivate WHERE department_id=#{departmentId};
+    </select>
+
+    <select id="findCultivateByPositionId" resultType="Cultivate">
+        SELECT * FROM cultivate WHERE position_id=#{positionId};
+    </select>
+
+    <select id="findCultivateByEmployeeId" resultType="Cultivate">
+        SELECT * FROM cultivate WHERE employee_id=#{employeeId};
+    </select>
+
+    <select id="findCultivateByCultivateTime" resultType="Cultivate">
+        SELECT * FROM cultivate WHERE cultivate_time like #{cultivateTime};
+    </select>
+</mapper>

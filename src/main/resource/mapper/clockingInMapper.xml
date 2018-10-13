@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.ClockingInDao">
+
+    <insert id="saveClockingIn" parameterType="ClockingIn">
+        INSERT INTO clocking_in(business_hours,closing_time,department_id,position_id,employee_id) VALUES(
+        #{businessHours},#{closingTime},#{departmentId},#{positionId},#{employeeId});
+    </insert>
+
+    <update id="updateClockingIn">
+        UPDATE clocking_in SET closing_time=#{1} WHERE id=#{0};
+    </update>
+
+    <select id="findDepartmentId" parameterType="int" resultType="ClockingIn">
+        SELECT * FROM clocking_in WHERE department_id=#{departmentId};
+    </select>
+
+    <select id="findPositionId" parameterType="int" resultType="ClockingIn">
+        SELECT * FROM clocking_in WHERE position_id=#{positionId};
+    </select>
+
+    <select id="findEmployeeId" parameterType="int" resultType="ClockingIn">
+        SELECT * FROM clocking_in WHERE employee_id=#{employeeId};
+    </select>
+</mapper>

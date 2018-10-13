@@ -1,4 +1,3 @@
-import com.xiaoy.service.EmploServ;
 import com.xiaoy.service.PayServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;

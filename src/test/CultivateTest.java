@@ -1,21 +1,22 @@
-import com.xiaoy.service.PositionServ;
+import com.xiaoy.service.CultivateServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+
 /**
  * Created by 紫青 on 2018/10/12.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")
-public class PositionTest {
+public class CultivateTest {
     @Autowired
-    private PositionServ positionServ;
+    private CultivateServ cultivateServ;
 
     @Test
-    public void testFindAllPosition(){
-        System.out.println(positionServ.findAllPosition());
+    public void testFindCultivateByDepartmentId(){
+        System.out.println(cultivateServ.findCultivateByCultivateTime("%2018-10%"));
     }
 }

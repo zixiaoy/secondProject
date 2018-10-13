@@ -9,7 +9,7 @@ public class Cultivate {
     private int id;
     private String name;
     private Date creaTime;//创建时间
-    private Date cultivateTime;//培训时间
+    private String cultivateTime;//培训时间
     private int departmentId;//部门id
     private int positionId;//职位id
     private int employeeId;//员工id
@@ -17,7 +17,7 @@ public class Cultivate {
     public Cultivate() {
     }
 
-    public Cultivate(int id, String name, Date creaTime, Date cultivateTime, int departmentId, int positionId, int employeeId) {
+    public Cultivate(int id, String name, Date creaTime, String cultivateTime, int departmentId, int positionId, int employeeId) {
         this.id = id;
         this.name = name;
         this.creaTime = creaTime;
@@ -51,11 +51,11 @@ public class Cultivate {
         this.creaTime = creaTime;
     }
 
-    public Date getCultivateTime() {
+    public String getCultivateTime() {
         return cultivateTime;
     }
 
-    public void setCultivateTime(Date cultivateTime) {
+    public void setCultivateTime(String cultivateTime) {
         this.cultivateTime = cultivateTime;
     }
 
@@ -89,7 +89,7 @@ public class Cultivate {
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", creaTime=" + creaTime +
-                ", cultivateTime=" + cultivateTime +
+                ", cultivateTime='" + cultivateTime + '\'' +
                 ", departmentId=" + departmentId +
                 ", positionId=" + positionId +
                 ", employeeId=" + employeeId +

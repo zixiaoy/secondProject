@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.RecruitDao">
+
+    <insert id="saveRecruit" parameterType="Recruit">
+        INSERT INTO recruit(company_name,company_address,department_id,position_id,base_pay,intro) VALUES(
+        #{companyName},#{companyAddress},#{departmentId},#{positionId},#{basePay},#{intro});
+    </insert>
+
+    <update id="updateRecruit" parameterType="Recruit">
+        UPDATE recruit SET company_name=#{companyName},company_address=#{companyAddress},
+        department_id=#{departmentId},position_id=#{positionId},base_pay=#{basePay},intro=#{intro} WHERE id=#{id};
+    </update>
+
+    <delete id="delRecruit" parameterType="int">
+        DELETE FROM recruit WHERE id=#{id};
+    </delete>
+
+    <select id="findRecruitByDepartmentId" resultType="Recruit">
+        SELECT * FROM recruit WHERE department_id=#{departmentId};
+    </select>
+
+    <select id="findRecruitByPositionId" resultType="Recruit">
+        SELECT * FROM recruit WHERE position_id=#{positionId};
+    </select>
+
+    <select id="findRecruitByCompanyAddress" resultType="Recruit">
+        SELECT * FROM recruit WHERE company_address LIKE #{companyAddress};
+    </select>
+
+    <select id="findAllRecruit" resultType="Recruit">
+        SELECT * FROM recruit;
+    </select>
+</mapper>

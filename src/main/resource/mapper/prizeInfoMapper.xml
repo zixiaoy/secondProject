@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.PrizeInfoDao">
+    
+    <insert id="savePrizeInfo" parameterType="PrizeInfo">
+        INSERT INTO prize_info(name,cause,money,crea_time,department_id,position_id,employee_id) VALUES(
+        #{name},#{cause},#{money},#{creaTime},#{departmentId},#{positionId},#{employeeId});
+    </insert>
+
+    <delete id="delPrizeInfo" parameterType="int">
+        DELETE FROM prize_info WHERE id=#{id};
+    </delete>
+
+    <update id="updatePrizeInfo">
+        UPDATE prize_info SET cause=#{1} WHERE id=#{0};
+    </update>
+
+    <select id="findPrizeInfoByDepartmentId" parameterType="int" resultType="PrizeInfo">
+        SELECT * FROM prize_info WHERE department_id=#{departmentId};
+    </select>
+
+    <select id="findPrizeInfoByPositionId" parameterType="int" resultType="PrizeInfo">
+        SELECT * FROM prize_info WHERE position_id=#{positionId};
+    </select>
+
+    <select id="findPrizeInfoByEmployeeId" parameterType="int" resultType="PrizeInfo">
+        SELECT * FROM prize_info WHERE employee_id=#{employeeId};
+    </select>
+</mapper>

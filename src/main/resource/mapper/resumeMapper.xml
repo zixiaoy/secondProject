@@ -8,4 +8,23 @@
         #{sex},#{education},#{tel},#{email},#{politicsStatus},#{departmentId},#{positionId},#{expectSalary},
         #{experience},#{address},#{interest},#{speciality},#{intro},#{visitorId});
     </insert>
+
+    <update id="updateResume" parameterType="Resume">
+        UPDATE resume SET name=#{name},age=#{age},education=#{education},tel=#{tel},email=#{email},
+        politics_status=#{politicsStatus},department_id=#{departmentId},position_id=#{positionId},
+        expect_salary=#{expectSalary},experience=#{experience},address=#{address},interest=#{interest},
+        speciality=#{speciality},intro=#{intro},visitor_id=#{visitorId} WHERE id=#{id};
+    </update>
+
+    <select id="findResumeByVisitorId" parameterType="int" resultType="resume">
+        SELECT * FROM resume WHERE visitor_id=#{visitorId};
+    </select>
+
+    <select id="findResumeByDepartmentId" resultType="Resume">
+        SELECT * FROM resume WHERE department_id=#{departmentId};
+    </select>
+
+    <select id="findResumeByPositionId" resultType="Resume">
+        SELECT * FROM resume WHERE position_id=#{positionId};
+    </select>
 </mapper>

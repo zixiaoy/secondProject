@@ -1,4 +1,5 @@
-import com.xiaoy.service.PositionServ;
+import com.xiaoy.service.EmploServ;
+import com.xiaoy.service.PrizeInfoServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +11,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")
-public class PositionTest {
+public class PrizeInfoTest {
     @Autowired
-    private PositionServ positionServ;
+    private PrizeInfoServ prizeInfoServ;
 
     @Test
-    public void testFindAllPosition(){
-        System.out.println(positionServ.findAllPosition());
+    public void testFindPrizeInfoByDepartmentId(){
+        System.out.println(prizeInfoServ.findPrizeInfoByDepartmentId(1));
     }
 }

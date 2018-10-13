@@ -1,4 +1,4 @@
-import com.xiaoy.service.PositionServ;
+import com.xiaoy.service.ClockingInServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,12 +10,12 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration("classpath*:applicationContext.xml")
-public class PositionTest {
+public class ClockingInTest {
     @Autowired
-    private PositionServ positionServ;
+    private ClockingInServ clockingInServ;
 
     @Test
-    public void testFindAllPosition(){
-        System.out.println(positionServ.findAllPosition());
+    public void testFindDepartmentId(){
+        System.out.println(clockingInServ.findDepartmentId(0));
     }
 }
