@@ -1,3 +1,4 @@
+import com.xiaoy.entity.Candidate;
 import com.xiaoy.service.CandidateServ;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -18,6 +19,7 @@ public class CandidateTest {
 
     @Test
     public void testFindCandidateByCreaTime(){
-        System.out.println(candidateServ.findCandidateByCreaTime(new Date()));
+//        candidateServ.saveCandidate(new Candidate(1,new Date(),1,1));
+        System.out.println(candidateServ.findCandidateByVisitorId(2));
     }
 }

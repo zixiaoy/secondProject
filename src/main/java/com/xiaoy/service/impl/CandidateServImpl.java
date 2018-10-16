@@ -29,6 +29,10 @@ public class CandidateServImpl implements CandidateServ{
         return candidateDao.delCandidate(id);
     }
 
+    public Candidate findCandidateByVisitorId(int visitorId) {
+        return candidateDao.findCandidateByVisitorId(visitorId);
+    }
+
     public List<Candidate> findCandidateByStatus(int status) {
         return candidateDao.findCandidateByStatus(status);
     }

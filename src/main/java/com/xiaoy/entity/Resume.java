@@ -8,7 +8,7 @@ public class Resume {
     private String name;
     private int age;
     private int sex;
-    private String edcuation;//学历
+    private String education;//学历
     private int tel;//电话
     private String email;//邮箱
     private String politicsStatus;//政治面貌
@@ -25,12 +25,12 @@ public class Resume {
     public Resume() {
     }
 
-    public Resume(int id, String name, int age, int sex, String edcuation, int tel, String email, String politicsStatus, int departmentId, int positionId, String expectSalary, String experience, String address, String interest, String speciality, String intro, int visitorId) {
+    public Resume(int id, String name, int age, int sex, String education, int tel, String email, String politicsStatus, int departmentId, int positionId, String expectSalary, String experience, String address, String interest, String speciality, String intro, int visitorId) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.sex = sex;
-        this.edcuation = edcuation;
+        this.education = education;
         this.tel = tel;
         this.email = email;
         this.politicsStatus = politicsStatus;
@@ -77,12 +77,12 @@ public class Resume {
         this.sex = sex;
     }
 
-    public String getEdcuation() {
-        return edcuation;
+    public String getEducation() {
+        return education;
     }
 
-    public void setEdcuation(String edcuation) {
-        this.edcuation = edcuation;
+    public void setEducation(String education) {
+        this.education = education;
     }
 
     public int getTel() {
@@ -188,7 +188,7 @@ public class Resume {
                 ", name='" + name + '\'' +
                 ", age=" + age +
                 ", sex=" + sex +
-                ", edcuation='" + edcuation + '\'' +
+                ", education='" + education + '\'' +
                 ", tel=" + tel +
                 ", email='" + email + '\'' +
                 ", politicsStatus='" + politicsStatus + '\'' +

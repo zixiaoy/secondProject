@@ -1,12 +1,20 @@
 package com.xiaoy.handler;
 
+import com.xiaoy.entity.Recruit;
+import com.xiaoy.entity.Resume;
 import com.xiaoy.entity.Visitor;
+import com.xiaoy.service.RecruitServ;
+import com.xiaoy.service.ResumeServ;
 import com.xiaoy.service.VisitorServ;
 import com.xiaoy.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import javax.servlet.http.HttpSession;
+import java.util.List;
 
 /**
  * Created by 紫青 on 2018/10/11.
@@ -16,6 +24,10 @@ import org.springframework.web.bind.annotation.ResponseBody;
 public class VisitorControl {
     @Autowired
     private VisitorServ visitorServ;
+    @Autowired
+    private RecruitServ recruitServ;
+    @Autowired
+    private ResumeServ resumeServ;
 
     @RequestMapping("regist")
     public String regist(){
@@ -51,14 +63,13 @@ public class VisitorControl {
     }
 
     @RequestMapping("findVisitor")
-    public String findVisitor(Visitor visitor){
+    public String findVisitor(Visitor visitor,HttpSession session){
         visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
-        if(visitor1!=null){
-            return "visitorPage";
-        }else {
-            return "visitorPage";
-        }
+        List<Recruit> recruits=recruitServ.findAllRecruit();
+        session.setAttribute("visitor",visitor1);
+        session.setAttribute("recruits",recruits);
+        return "visitorPage";
     }
 
     @RequestMapping("loginVerify")
@@ -86,5 +97,29 @@ public class VisitorControl {
         }else {
             return "456";
         }
+    }
+
+    @RequestMapping("psdVerify")
+    @ResponseBody
+    public String psdVerify(String name,String password){
+        Visitor visitor=visitorServ.findVisitorByName(name);
+        password=MD5.md5(password);
+        if(visitor.getPassword().equals(password)){
+            return "123";
+        }else {
+            return "456";
+        }
+    }
+
+    @RequestMapping("visitor3")
+    public String visitor3(){
+        return "visitorPage";
+    }
+
+    @RequestMapping("visitor2")
+    public String visitor2(int visitorId,ModelMap model){
+        Resume resume=resumeServ.findResumeByVisitorId(visitorId);
+        model.addAttribute("resume",resume);
+        return "visitorPage2";
     }
 }

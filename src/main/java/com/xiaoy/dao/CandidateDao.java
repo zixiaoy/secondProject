@@ -14,6 +14,7 @@ public interface CandidateDao {
     public boolean saveCandidate(Candidate candidate);
     public boolean updateCandidate(int id,int status,int interview);
     public boolean delCandidate(int id);
+    public Candidate findCandidateByVisitorId(int visitorId);
     public List<Candidate> findCandidateByStatus(int status);
     public List<Candidate> findCandidateByInterview(int interview);
     public List<Candidate> findCandidateByCreaTime(Date creaTime);

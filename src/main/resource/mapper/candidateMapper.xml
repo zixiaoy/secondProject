@@ -14,6 +14,10 @@
         DELETE FROM candidate WHERE id=#{id};
     </delete>
 
+    <select id="findCandidateByVisitorId" resultType="Candidate">
+        SELECT * FROM candidate WHERE visitor_id=#{visitorId};
+    </select>
+
     <select id="findCandidateByStatus" resultType="Candidate">
         SELECT * FROM candidate WHERE status=#{status};
     </select>

@@ -15,6 +15,13 @@ public class Candidate {
     public Candidate() {
     }
 
+    public Candidate(int visitorId, Date creaTime, int status, int interview) {
+        this.visitorId = visitorId;
+        this.creaTime = creaTime;
+        this.status = status;
+        this.interview = interview;
+    }
+
     public Candidate(int id, int visitorId, Date creaTime, int status, int interview) {
         this.id = id;
         this.visitorId = visitorId;
