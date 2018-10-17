@@ -13,11 +13,22 @@ public class Feedback {
     private int interview;//是否面试 1 面试 2 放弃
     private Date interviewTime;// 面试时间
     private int admit;//是否被录取 1 录取 2 未录取
+    private int visitorId;
 
     public Feedback() {
     }
 
-    public Feedback(int id, int recruitId, Date creaTime, int status, int interview, Date interviewTime, int admit) {
+    public Feedback(int recruitId, Date creaTime, int status, int interview, Date interviewTime, int admit, int visitorId) {
+        this.recruitId = recruitId;
+        this.creaTime = creaTime;
+        this.status = status;
+        this.interview = interview;
+        this.interviewTime = interviewTime;
+        this.admit = admit;
+        this.visitorId = visitorId;
+    }
+
+    public Feedback(int id, int recruitId, Date creaTime, int status, int interview, Date interviewTime, int admit, int visitorId) {
         this.id = id;
         this.recruitId = recruitId;
         this.creaTime = creaTime;
@@ -25,6 +36,7 @@ public class Feedback {
         this.interview = interview;
         this.interviewTime = interviewTime;
         this.admit = admit;
+        this.visitorId = visitorId;
     }
 
     public int getId() {
@@ -83,6 +95,14 @@ public class Feedback {
         this.admit = admit;
     }
 
+    public int getVisitorId() {
+        return visitorId;
+    }
+
+    public void setVisitorId(int visitorId) {
+        this.visitorId = visitorId;
+    }
+
     @Override
     public String toString() {
         return "Feedback{" +
@@ -93,6 +113,7 @@ public class Feedback {
                 ", interview=" + interview +
                 ", interviewTime=" + interviewTime +
                 ", admit=" + admit +
+                ", visitorId=" + visitorId +
                 '}';
     }
 }

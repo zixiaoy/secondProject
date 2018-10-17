@@ -16,6 +16,6 @@ public class FeedbackTest {
 
     @Test
     public void testFindAllFeedback(){
-        System.out.println(feedbackServ.findFeedbackAll());
+        System.out.println(feedbackServ.findFeedbackByVisitorIdAndStatus(2,1));
     }
 }

@@ -52,4 +52,12 @@ public class FeedbackServImpl implements FeedbackServ {
     public List<Feedback> findFeedbackAll() {
         return feedbackDao.findFeedbackAll();
     }
+
+    public List<Feedback> findFeedbackByVisitorId(int visitorId) {
+        return feedbackDao.findFeedbackByVisitorId(visitorId);
+    }
+
+    public List<Feedback> findFeedbackByVisitorIdAndStatus(int visitorId, int status) {
+        return feedbackDao.findFeedbackByVisitorIdAndStatus(visitorId, status);
+    }
 }

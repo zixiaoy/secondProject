@@ -40,7 +40,7 @@
                 <ul>
                     <li>
                         <h2 class="obtain" id="input1">
-                            <a href="visitor1" style="font-size:25px;color:#1acbfc">消息反馈</a>
+                            <a href="visitor1?visitorId=${sessionScope.visitor.id}" style="font-size:25px;color:#1acbfc">消息反馈</a>
                         </h2>
                     </li>
                     <li>
@@ -65,7 +65,7 @@
                     </li>
                     <li>
                         <h2 class="obtain">
-                            <a href="javascript:history.back(-1)" style="font-size:25px;color:#1acbfc">
+                            <a href="${pageContext.request.contextPath}/pages/login.jsp" style="font-size:25px;color:#1acbfc">
                                 退出
                             </a>
                         </h2>
@@ -76,10 +76,10 @@
     </div>
 
     <div style="text-align:center">
-        <h2 style="color:brown;font-size:50px;text-align:left">查看简历：</h2>
+        <h2 style="color:brown;font-size:50px;text-align:left">查看简历：</h2><br>
         <c:if test="${requestScope.resume==null}">
             <span style="font-size:30px">暂无简历</span><br><br>
-            <a href="addResume?visitorId=${sessionScope.visitor.id}" style="font-size:30px">创建简历</a>
+            <a href="addResume?visitorId=${sessionScope.visitor.id}" style="font-size:30px;color:#00dbde">创建简历</a>
         </c:if>
         <c:if test="${requestScope.resume!=null}">
             <table border="2px" cellpadding="10px" cellspacing="0" align="center">

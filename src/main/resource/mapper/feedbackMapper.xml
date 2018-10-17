@@ -3,8 +3,8 @@
 <mapper namespace="com.xiaoy.dao.FeedbackDao">
 
     <insert id="saveFeedback" parameterType="Feedback">
-        INSERT INTO feedback(recruit_id,crea_time,status,interview,interview_time,admit) VALUES(
-        #{recruitId},#{creaTime},#{status},#{interview},#{interviewTime},#{admit});
+        INSERT INTO feedback(recruit_id,crea_time,status,interview,interview_time,admit,visitor_id) VALUES(
+        #{recruitId},#{creaTime},#{status},#{interview},#{interviewTime},#{admit},#{visitorId});
     </insert>
 
     <update id="updateFeedback">
@@ -37,5 +37,13 @@
 
     <select id="findFeedbackAll" resultType="Feedback">
         SELECT * FROM feedback;
+    </select>
+
+    <select id="findFeedbackByVisitorId" resultType="Feedback">
+        SELECT * FROM feedback WHERE visitor_id=#{visitorId};
+    </select>
+
+    <select id="findFeedbackByVisitorIdAndStatus" resultType="Feedback">
+        SELECT * FROM feedback WHERE visitor_id=#{0} AND status=#{1};
     </select>
 </mapper>

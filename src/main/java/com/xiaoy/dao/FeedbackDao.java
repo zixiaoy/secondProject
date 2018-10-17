@@ -20,4 +20,6 @@ public interface FeedbackDao {
     public List<Feedback> findFeedbackByCreaTime(Date creaTime);
     public List<Feedback> findFeedbackByInterviewTime(Date interviewTime);
     public List<Feedback> findFeedbackAll();
+    public List<Feedback> findFeedbackByVisitorId(int visitorId);
+    public List<Feedback> findFeedbackByVisitorIdAndStatus(int visitorId,int status);
 }

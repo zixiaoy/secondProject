@@ -22,6 +22,9 @@
 
     <script>
         $(function(){
+            if(${sessionScope.feedbacks.size()!=0}){
+                alert("您有${sessionScope.feedbacks.size()}条反馈消息未查看，请前往查看");
+            }
             $("#input6").click(function(){
                 if(${requestScope.candidate!=null}){
                     if(${requestScope.candidate=="789"}){
@@ -64,7 +67,7 @@
                 <ul>
                     <li>
                         <h2 class="obtain" id="input1">
-                            <a href="visitor1" style="font-size:25px;color:#1acbfc">消息反馈</a>
+                            <a href="visitor1?visitorId=${sessionScope.visitor.id}" style="font-size:25px;color:#1acbfc">消息反馈</a>
                         </h2>
                     </li>
                     <li>
@@ -89,7 +92,7 @@
                     </li>
                     <li>
                         <h2 class="obtain">
-                            <a href="javascript:history.back(-1)" style="font-size:25px;color:#1acbfc">
+                            <a href="${pageContext.request.contextPath}/pages/login.jsp" style="font-size:25px;color:#1acbfc">
                                 退出
                             </a>
                         </h2>
@@ -100,7 +103,7 @@
     </div>
 
     <div style="text-align:center">
-        <h2 style="color:brown;font-size:50px;text-align:left">招聘信息：</h2>
+        <h2 style="color:brown;font-size:50px;text-align:left">招聘信息：</h2><br>
         <c:if test="${sessionScope.recruits.size()==0}">
             <span style="font-size:30px">暂无招聘信息</span>
         </c:if>

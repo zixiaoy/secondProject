@@ -1,8 +1,10 @@
 package com.xiaoy.handler;
 
+import com.xiaoy.entity.Feedback;
 import com.xiaoy.entity.Recruit;
 import com.xiaoy.entity.Resume;
 import com.xiaoy.entity.Visitor;
+import com.xiaoy.service.FeedbackServ;
 import com.xiaoy.service.RecruitServ;
 import com.xiaoy.service.ResumeServ;
 import com.xiaoy.service.VisitorServ;
@@ -28,6 +30,8 @@ public class VisitorControl {
     private RecruitServ recruitServ;
     @Autowired
     private ResumeServ resumeServ;
+    @Autowired
+    private FeedbackServ feedbackServ;
 
     @RequestMapping("regist")
     public String regist(){
@@ -67,6 +71,8 @@ public class VisitorControl {
         visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
         List<Recruit> recruits=recruitServ.findAllRecruit();
+        List<Feedback> feedbacks=feedbackServ.findFeedbackByVisitorIdAndStatus(visitor1.getId(),1);
+        session.setAttribute("feedbacks",feedbacks);
         session.setAttribute("visitor",visitor1);
         session.setAttribute("recruits",recruits);
         return "visitorPage";
@@ -121,5 +127,22 @@ public class VisitorControl {
         Resume resume=resumeServ.findResumeByVisitorId(visitorId);
         model.addAttribute("resume",resume);
         return "visitorPage2";
+    }
+
+    @RequestMapping("visitor4")
+    public String visitor4(){
+        return "visitorPage4";
+    }
+
+    @RequestMapping("visitor5")
+    public String visitor5(){
+        return "resetPasswords";
+    }
+
+    @RequestMapping("visitor1")
+    public String visitor1(int visitorId,ModelMap model){
+        List<Feedback> feedbackList=feedbackServ.findFeedbackByVisitorId(visitorId);
+        model.addAttribute("feedbackList",feedbackList);
+        return "visitorPage1";
     }
 }
