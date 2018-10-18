@@ -12,7 +12,7 @@ public interface RecruitServ {
     public boolean updateRecruit(Recruit recruit);
     public boolean delRecruit(int id);
     public List<Recruit> findRecruitByDepartmentId(int departmentId);
-    public List<Recruit> findRecruitByPositionId(int positionId);
+    public Recruit findRecruitByPositionId(int positionId);
     public List<Recruit> findRecruitByCompanyAddress(String companyAddress);
     public List<Recruit> findAllRecruit();
 }

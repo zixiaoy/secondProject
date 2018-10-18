@@ -38,7 +38,7 @@ public class ResumeControl {
         }
         model.addAttribute("departments",departments);
         model.addAttribute("visitorId",visitorId);
-        return "addResume";
+        return "visitor/addResume";
     }
 
     @RequestMapping(value="departmentVerify",produces="application/json; charset=utf-8")
@@ -53,6 +53,6 @@ public class ResumeControl {
     public String resume(Resume resume, HttpSession session){
         System.out.println(resume);
         resumeServ.saveResume(resume);
-        return "visitorPage";
+        return "visitor/visitorPage";
     }
 }

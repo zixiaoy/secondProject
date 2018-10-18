@@ -100,47 +100,55 @@
                 <td>是否录取</td>
                 <td>操作</td>
             </tr>
-            <c:forEach var="feedback" items="${requestScope.feedbackList}">
-                <tr>
-                    <td>${feedback.recruitId}</td>
-                    <td><f:formatDate value="${feedback.creaTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
-                    <td>
-                        <c:if test="${feedback.status==1}">
-                            未查看
-                        </c:if>
-                        <c:if test="${feedback.status==2}">
-                            已查看
-                        </c:if>
-                    </td>
-                    <td>
+            <form action="interviewVerify" method="post">
+                <c:forEach var="feedback" items="${requestScope.feedbackList}">
+                    <tr>
+                        <td>${feedback.recruitId}</td>
+                        <td><f:formatDate value="${feedback.creaTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
+                        <td>
+                            <c:if test="${feedback.status==1}">
+                                未查看
+                            </c:if>
+                            <c:if test="${feedback.status==2}">
+                                已查看
+                            </c:if>
+                        </td>
+                        <td>
+                            <c:if test="${feedback.interview==0}">
+                                <select name="interview" style="font-size:20px">
+                                    <option value="1">按时面试</option>
+                                    <option value="2">放弃面试</option>
+                                </select>
+                            </c:if>
+                            <c:if test="${feedback.interview==1}">
+                                按时面试
+                            </c:if>
+                            <c:if test="${feedback.interview==2}">
+                                已放弃面试
+                            </c:if>
+                        </td>
+                        <td><f:formatDate value="${feedback.interviewTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
+                        <td>
+                            <c:if test="${feedback.admit==0}">
+                                未反馈
+                            </c:if>
+                            <c:if test="${feedback.admit==1}">
+                                被录取
+                            </c:if>
+                            <c:if test="${feedback.admit==2}">
+                                被拒绝
+                            </c:if>
+                        </td>
                         <c:if test="${feedback.interview==0}">
-                            <select name="interview">
-                                <option value="1">按时面试</option>
-                                <option value="2">放弃面试</option>
-                            </select>
+                            <td>
+                                <input type="hidden" name="id" value="${feedback.id}">
+                                <input type="hidden" name="admit" value="${feedback.admit}">
+                                <input type="submit" value="确定" class="input1" style="font-size:20px">
+                            </td>
                         </c:if>
-                        <c:if test="${feedback.interview==1}">
-                            按时面试
-                        </c:if>
-                        <c:if test="${feedback.interview==2}">
-                            已放弃面试
-                        </c:if>
-                    </td>
-                    <td><f:formatDate value="${feedback.interviewTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
-                    <td>
-                        <c:if test="${feedback.admit==0}">
-                            未反馈
-                        </c:if>
-                        <c:if test="${feedback.admit==1}">
-                            被录取
-                        </c:if>
-                        <c:if test="${feedback.admit==2}">
-                            被拒绝
-                        </c:if>
-                    </td>
-                    <td><a href="interviewVerify" class="input1">确定</a></td>
-                </tr>
-            </c:forEach>
+                    </tr>
+                </c:forEach>
+            </form>
         </table>
     </c:if>
 </div>

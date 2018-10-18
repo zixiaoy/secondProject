@@ -67,15 +67,15 @@ public class VisitorControl {
     }
 
     @RequestMapping("findVisitor")
-    public String findVisitor(Visitor visitor,HttpSession session){
+    public String findVisitor(Visitor visitor,HttpSession session,ModelMap model){
         visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
         List<Recruit> recruits=recruitServ.findAllRecruit();
         List<Feedback> feedbacks=feedbackServ.findFeedbackByVisitorIdAndStatus(visitor1.getId(),1);
-        session.setAttribute("feedbacks",feedbacks);
+        model.addAttribute("feedbacks",feedbacks);
         session.setAttribute("visitor",visitor1);
         session.setAttribute("recruits",recruits);
-        return "visitorPage";
+        return "visitor/visitorPage";
     }
 
     @RequestMapping("loginVerify")
@@ -119,19 +119,19 @@ public class VisitorControl {
 
     @RequestMapping("visitor3")
     public String visitor3(){
-        return "visitorPage";
+        return "visitor/visitorPage";
     }
 
     @RequestMapping("visitor2")
     public String visitor2(int visitorId,ModelMap model){
         Resume resume=resumeServ.findResumeByVisitorId(visitorId);
         model.addAttribute("resume",resume);
-        return "visitorPage2";
+        return "visitor/visitorPage2";
     }
 
     @RequestMapping("visitor4")
     public String visitor4(){
-        return "visitorPage4";
+        return "visitor/visitorPage4";
     }
 
     @RequestMapping("visitor5")
@@ -143,6 +143,6 @@ public class VisitorControl {
     public String visitor1(int visitorId,ModelMap model){
         List<Feedback> feedbackList=feedbackServ.findFeedbackByVisitorId(visitorId);
         model.addAttribute("feedbackList",feedbackList);
-        return "visitorPage1";
+        return "visitor/visitorPage1";
     }
 }

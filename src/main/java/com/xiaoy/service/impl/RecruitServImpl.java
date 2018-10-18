@@ -32,7 +32,7 @@ public class RecruitServImpl implements RecruitServ {
         return recruitDao.findRecruitByDepartmentId(departmentId);
     }
 
-    public List<Recruit> findRecruitByPositionId(int positionId) {
+    public Recruit findRecruitByPositionId(int positionId) {
         return recruitDao.findRecruitByPositionId(positionId);
     }
 

@@ -10,7 +10,7 @@ public class Candidate {
     private int visitorId;
     private Date creaTime;//投递时间
     private int status;//查看状态 1 未查看 2 已查看
-    private int interview;//面试状态 1 未面试 2 已面试
+    private int interview;//面试状态 1 未面试 2 已录取 3 未通过
 
     public Candidate() {
     }

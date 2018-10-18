@@ -14,6 +14,12 @@ public class Position {
     public Position() {
     }
 
+    public Position(String name, Date creaTime, int departmentId) {
+        this.name = name;
+        this.creaTime = creaTime;
+        this.departmentId = departmentId;
+    }
+
     public Position(int id, String name, Date creaTime, int departmentId) {
         this.id = id;
         this.name = name;

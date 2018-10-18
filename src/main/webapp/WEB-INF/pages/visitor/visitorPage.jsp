@@ -22,8 +22,8 @@
 
     <script>
         $(function(){
-            if(${sessionScope.feedbacks.size()!=0}){
-                alert("您有${sessionScope.feedbacks.size()}条反馈消息未查看，请前往查看");
+            if(${requestScope.feedbacks.size()!=0}){
+                alert("您有${requestScope.feedbacks.size()}条反馈消息未查看，请前往查看");
             }
             $("#input6").click(function(){
                 if(${requestScope.candidate!=null}){

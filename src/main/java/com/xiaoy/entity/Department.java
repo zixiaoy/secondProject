@@ -13,6 +13,11 @@ public class Department {
     public Department() {
     }
 
+    public Department(String name, Date creaTime) {
+        this.name = name;
+        this.creaTime = creaTime;
+    }
+
     public Department(int id, String name, Date creaTime) {
         this.id = id;
         this.name = name;
