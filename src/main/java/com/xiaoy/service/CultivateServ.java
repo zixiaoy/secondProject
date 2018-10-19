@@ -14,7 +14,6 @@ public interface CultivateServ {
     public boolean delCultivate(int id);
     public Cultivate findCultivateById(int id);
     public List<Cultivate> findCultivateByDepartmentId(int departmentId);
-    public List<Cultivate> findCultivateByPositionId(int positionId);
-    public List<Cultivate> findCultivateByEmployeeId(int employeeId);
     public List<Cultivate> findCultivateByCultivateTime(Date cultivateTime);
+    public List<Cultivate> findAllCultivate();
 }

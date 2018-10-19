@@ -26,4 +26,8 @@
     <select id="findPrizeInfoByEmployeeId" parameterType="int" resultType="PrizeInfo">
         SELECT * FROM prize_info WHERE employee_id=#{employeeId};
     </select>
+
+    <select id="findAllPrizeInfo" resultType="PrizeInfo">
+        SELECT * FROM prize_info;
+    </select>
 </mapper>

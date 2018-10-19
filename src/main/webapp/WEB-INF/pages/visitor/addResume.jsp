@@ -47,7 +47,7 @@
                     <span class="login100-form-title p-b-49">创建简历</span>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="请输入姓名">
-                        <input class="input100" type="text" name="name" placeholder="姓名" autocomplete="off">
+                        <input class="input100" type="text" name="name" placeholder="姓名">
                         <span class="focus-input100" style="text-align:right;color:red"></span>
                     </div>
 

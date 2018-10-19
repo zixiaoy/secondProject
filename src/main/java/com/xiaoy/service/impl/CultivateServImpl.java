@@ -37,15 +37,11 @@ public class CultivateServImpl implements CultivateServ{
         return cultivateDao.findCultivateByDepartmentId(departmentId);
     }
 
-    public List<Cultivate> findCultivateByPositionId(int positionId) {
-        return cultivateDao.findCultivateByPositionId(positionId);
-    }
-
-    public List<Cultivate> findCultivateByEmployeeId(int employeeId) {
-        return cultivateDao.findCultivateByEmployeeId(employeeId);
-    }
-
     public List<Cultivate> findCultivateByCultivateTime(Date cultivateTime) {
         return cultivateDao.findCultivateByCultivateTime(cultivateTime);
+    }
+
+    public List<Cultivate> findAllCultivate() {
+        return cultivateDao.findAllCultivate();
     }
 }

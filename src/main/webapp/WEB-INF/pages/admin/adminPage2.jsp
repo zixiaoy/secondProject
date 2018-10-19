@@ -7,11 +7,18 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<!DOCTYPE html>
 <html>
 <head>
     <title>管理员界面</title>
+    <link rel="stylesheet" type="text/css" href="/plugIn/vendor/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/fonts/iconic/css/material-design-iconic-font.min.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/css/util.css">
+    <link rel="stylesheet" type="text/css" href="/plugIn/css/main.css">
+
     <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="/plugIn/js/main.js"></script>
+
     <script>
         $(function(){
             $("#department1").change(function(){
@@ -33,61 +40,65 @@
     </script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <div class="limiter">
+        <div class="container-login100" style="background-image: url('/plugIn/images/bg-01.jpg');">
+            <div class="wrap-login100 p-l-55 p-r-55 p-t-65 p-b-54">
+                <form class="login100-form validate-form" action="admin2.do" method="post">
+                    <span class="login100-form-title p-b-49">新建招聘</span>
 
-    <div style="text-align:center">
-        <h2 style="color:brown;font-size:50px;text-align:left">发布招聘：</h2><br>
-        <form action="admin2.do" method="post">
-            <table align="center" style="font-size:25px">
-                <tr>
-                    <td>公司名称：</td>
-                    <td><input type="text" name="companyName" style="font-size:25px"></td>
-                </tr>
-                <tr>
-                    <td>公司地址：</td>
-                    <td><input type="text" name="companyAddress" style="font-size:25px"></td>
-                </tr>
-                <tr>
-                    <td>招聘部门：</td>
-                    <td>
-                        <select style="font-size:25px" name="departmentId" id="department1">
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="请输入公司名称">
+                        <input class="input100" type="text" name="companyName" placeholder="公司名称">
+                        <span class="focus-input100" style="text-align:right;color:red"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="请输入公司地址">
+                        <input class="input100" type="text" name="companyAddress" placeholder="公司地址">
+                        <span class="focus-input100" style="text-align:right;color:red"></span>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23">
+                        <select class="input100" name="departmentId" id="department1">
                             <c:forEach var="departments" items="${requestScope.departments}">
                                 <option value="${departments.id}">${departments.name}</option>
                             </c:forEach>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>招聘岗位：</td>
-                    <td>
-                        <select style="font-size:25px" name="positionId" id="position1">
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23">
+                        <select class="input100" name="positionId" id="position1">
                             <c:forEach var="position" items="${requestScope.positionList}">
                                 <option value="${position.id}">${position.name}</option>
                             </c:forEach>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>薪资区间：</td>
-                    <td>
-                        <select style="font-size:25px" name="basePay">
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23">
+                        <select class="input100" name="basePay">
                             <option value="3000-5000">3000-5000</option>
                             <option value="5001-8000">5001-8000</option>
                             <option value="8001-12000">8001-12000</option>
                             <option value="12001-15000">12001-15000</option>
                             <option value="15001-20000">15001-20000</option>
                         </select>
-                    </td>
-                </tr>
-                <tr>
-                    <td>岗位职责：</td>
-                    <td><input type="text" name="intro" style="font-size:25px"></td>
-                </tr>
-                <tr>
-                    <td colspan="2"><input type="submit" style="font-size:25px"></td>
-                </tr>
-            </table>
-        </form>
+                    </div>
+
+                    <div class="text-left p-t-8 p-b-31">
+                        <span style="color:red" id="span"></span>
+                    </div>
+
+                    <div class="container-login100-form-btn">
+                        <div class="wrap-login100-form-btn">
+                            <div class="login100-form-bgbtn"></div>
+                            <button type="submit" class="login100-form-btn">发 布</button>
+                        </div>
+                    </div>
+
+                    <div class="flex-col-c p-t-25">
+                        <a href="javascript:history.back(-1)" class="txt2">返回上一页</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
 </body>
 </html>

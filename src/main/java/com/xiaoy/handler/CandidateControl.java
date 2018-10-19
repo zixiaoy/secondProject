@@ -3,6 +3,7 @@ package com.xiaoy.handler;
 import com.alibaba.fastjson.JSON;
 import com.xiaoy.entity.*;
 import com.xiaoy.service.*;
+import org.apache.ibatis.annotations.Param;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -35,6 +36,14 @@ public class CandidateControl {
     private RecruitServ recruitServ;
     @Autowired
     private EmploServ emploServ;
+    @Autowired
+    private ClockingInServ clockingInServ;
+    @Autowired
+    private PrizeInfoServ prizeInfoServ;
+    @Autowired
+    private PayServ payServ;
+    @Autowired
+    private CultivateServ cultivateServ;
 
     @RequestMapping(value = "delivery",produces = "application/json;charset=utf-8")
     public String delivery(int visitorId,int positionId,ModelMap model){
@@ -225,5 +234,143 @@ public class CandidateControl {
         }
         model.addAttribute("employeeList",employeeList);
         return "admin/adminPage5";
+    }
+
+    @RequestMapping("delEmplo")
+    public String delEmplo(int id,ModelMap model){
+        Employee employee=emploServ.findEmploById(id);
+        if(employee.getRank()==4){
+            model.addAttribute("delEmplo",123);
+        }else {
+            emploServ.delEmplo(id);
+            model.addAttribute("delEmplo",456);
+        }
+        return "forward:/pages/admin5";
+    }
+
+    @RequestMapping("removeEmplo")
+    public String removeEmplo(int id,ModelMap model){
+        List<Department> departments=departmentServ.findAllDepartment();
+        Employee employee=emploServ.findEmploById(id);
+        if(departments.size()!=0){
+            List<Position> positionList=positionServ.findPositionByDepartmentId(departments.get(0).getId());
+            model.addAttribute("positionList",positionList);
+        }
+        model.addAttribute("employee",employee);
+        model.addAttribute("departments",departments);
+        return "admin/removeEmplo";
+    }
+
+    @RequestMapping("removeEmplo.do")
+    public String removeEmploDo(int id,int positionId,int departmentId,ModelMap model){
+        Employee employee=emploServ.findEmploById(id);
+        if(employee.getPositionId()==positionId){
+            model.addAttribute("removeEmplo",123);
+        }else {
+            emploServ.updateEmploByPosition(id, departmentId, positionId);
+            model.addAttribute("removeEmplo",456);
+        }
+        return "forward:/pages/admin5";
+    }
+
+    @RequestMapping("clockingInEmplo")
+    public String clockingInEmplo(int id,ModelMap model){
+        List<ClockingIn> clockingInList=clockingInServ.findEmployeeId(id);
+        model.addAttribute("clockingInList",clockingInList);
+        return "admin/clockingInEmplo";
+    }
+
+    @RequestMapping("prizeInfoEmplo")
+    public String prizeInfoEmplo(int id,ModelMap model){
+        Employee employee=emploServ.findEmploById(id);
+        model.addAttribute("employee",employee);
+        return "admin/prizeInfoEmplo";
+    }
+
+    @RequestMapping("prizeInfoEmplo.do")
+    public String prizeInfoEmploDo(PrizeInfo prizeInfo){
+        Employee employee=emploServ.findEmploById(prizeInfo.getEmployeeId());
+        prizeInfo.setCreaTime(new Date());
+        prizeInfo.setDepartmentId(employee.getDepartmentId());
+        prizeInfo.setPositionId(employee.getPositionId());
+        prizeInfoServ.savePrizeInfo(prizeInfo);
+        return "forward:/pages/admin5";
+    }
+
+    @RequestMapping("payEmplo")
+    public String payEmplo(int id,ModelMap model){
+        model.addAttribute("employeeId",id);
+        return "admin/payEmplo";
+    }
+
+    @RequestMapping("admin6")
+    public String admin6(ModelMap model){
+        List<PrizeInfo> prizeInfoList=prizeInfoServ.findAllPrizeInfo();
+        List<Department> departments=departmentServ.findAllDepartment();
+        model.addAttribute("prizeInfoList",prizeInfoList);
+        model.addAttribute("departments",departments);
+        return "admin/adminPage6";
+    }
+
+    @RequestMapping("admin7")
+    public String admin7(ModelMap model){
+        List<Pay> payList=payServ.findAllPay();
+        model.addAttribute("payList",payList);
+        return "admin/adminPage7";
+    }
+
+    @RequestMapping("admin8")
+    public String admin8(ModelMap model){
+        List<Pay> payList=payServ.findAllPay();
+        model.addAttribute("payList",payList);
+        return "admin/adminPage8";
+    }
+
+    @RequestMapping("admin4")
+    public String admin4(ModelMap model){
+        List<Cultivate> cultivateList=cultivateServ.findAllCultivate();
+        model.addAttribute("cultivateList",cultivateList);
+        return "admin/adminPage4";
+    }
+
+    @RequestMapping("addCultivate")
+    public String addCultivate(ModelMap model){
+        List<Department> departments=departmentServ.findAllDepartment();
+        model.addAttribute("departments",departments);
+        return "admin/addCultivate";
+    }
+
+    @RequestMapping("addCultivate.do")
+    public String addCultivateDo(Cultivate cultivate,String cultivateTime2) throws ParseException {
+        cultivate.setCreaTime(new Date());
+        cultivateTime2=cultivateTime2+" 14:30:00";
+        Date cultivateTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cultivateTime2);
+        cultivate.setCultivateTime(cultivateTime);
+//        cultivateServ.saveCultivate(cultivate);
+        return "forward:/pages/admin4";
+    }
+
+    @RequestMapping("delCultivate")
+    public String delCultivate(int id){
+        cultivateServ.delCultivate(id);
+        return "forward:/pages/admin4";
+    }
+
+    @RequestMapping("editCultivate")
+    public String editCultivate(int id,ModelMap model){
+        Cultivate cultivate=cultivateServ.findCultivateById(id);
+        List<Department> departments=departmentServ.findAllDepartment();
+        model.addAttribute("departments",departments);
+        model.addAttribute("cultivate",cultivate);
+        return "admin/editCultivate";
+    }
+
+    @RequestMapping("editCultivate.do")
+    public String editCultivateDo(Cultivate cultivate,String cultivateTime2) throws ParseException {
+        cultivateTime2=cultivateTime2+" 14:30:00";
+        Date cultivateTime=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").parse(cultivateTime2);
+        cultivate.setCultivateTime(cultivateTime);
+        cultivateServ.updateCultivate(cultivate);
+        return "forward:/pages/admin4";
     }
 }

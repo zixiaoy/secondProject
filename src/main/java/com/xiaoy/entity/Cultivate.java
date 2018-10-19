@@ -11,20 +11,16 @@ public class Cultivate {
     private Date creaTime;//创建时间
     private Date cultivateTime;//培训时间
     private int departmentId;//部门id
-    private int positionId;//职位id
-    private int employeeId;//员工id
 
     public Cultivate() {
     }
 
-    public Cultivate(int id, String name, Date creaTime, Date cultivateTime, int departmentId, int positionId, int employeeId) {
+    public Cultivate(int id, String name, Date creaTime, Date cultivateTime, int departmentId) {
         this.id = id;
         this.name = name;
         this.creaTime = creaTime;
         this.cultivateTime = cultivateTime;
         this.departmentId = departmentId;
-        this.positionId = positionId;
-        this.employeeId = employeeId;
     }
 
     public int getId() {
@@ -67,22 +63,6 @@ public class Cultivate {
         this.departmentId = departmentId;
     }
 
-    public int getPositionId() {
-        return positionId;
-    }
-
-    public void setPositionId(int positionId) {
-        this.positionId = positionId;
-    }
-
-    public int getEmployeeId() {
-        return employeeId;
-    }
-
-    public void setEmployeeId(int employeeId) {
-        this.employeeId = employeeId;
-    }
-
     @Override
     public String toString() {
         return "Cultivate{" +
@@ -91,8 +71,6 @@ public class Cultivate {
                 ", creaTime=" + creaTime +
                 ", cultivateTime=" + cultivateTime +
                 ", departmentId=" + departmentId +
-                ", positionId=" + positionId +
-                ", employeeId=" + employeeId +
                 '}';
     }
 }

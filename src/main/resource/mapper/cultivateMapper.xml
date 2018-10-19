@@ -3,13 +3,12 @@
 <mapper namespace="com.xiaoy.dao.CultivateDao">
 
     <insert id="saveCultivate" parameterType="Cultivate">
-        INSERT INTO cultivate(name,crea_time,cultivate_time,department_id,position_id,employee_id) VALUES(
-        #{name},#{creaTime},#{cultivateTime},#{departmentId},#{positionId},#{employeeId});
+        INSERT INTO cultivate(name,crea_time,cultivate_time,department_id) VALUES(
+        #{name},#{creaTime},#{cultivateTime},#{departmentId});
     </insert>
 
     <update id="updateCultivate" parameterType="Cultivate">
-        UPDATE cultivate SET name=#{name},cultivate_time=#{cultivateTime},department_id=#{departmentId},
-        position_id=#{positionId},employee_id=#{employeeId} WHERE id=#{id};
+        UPDATE cultivate SET name=#{name},cultivate_time=#{cultivateTime},department_id=#{departmentId} WHERE id=#{id};
     </update>
 
     <delete id="delCultivate" parameterType="int">
@@ -24,15 +23,11 @@
         SELECT * FROM cultivate WHERE department_id=#{departmentId};
     </select>
 
-    <select id="findCultivateByPositionId" resultType="Cultivate">
-        SELECT * FROM cultivate WHERE position_id=#{positionId};
-    </select>
-
-    <select id="findCultivateByEmployeeId" resultType="Cultivate">
-        SELECT * FROM cultivate WHERE employee_id=#{employeeId};
-    </select>
-
     <select id="findCultivateByCultivateTime" resultType="Cultivate">
         SELECT * FROM cultivate WHERE cultivate_time like CONCAT('%',#{cultivateTime},'%');
+    </select>
+
+    <select id="findAllCultivate" resultType="Cultivate">
+        SELECT * FROM cultivate;
     </select>
 </mapper>
