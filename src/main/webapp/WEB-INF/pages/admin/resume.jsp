@@ -1,3 +1,4 @@
+<%@ taglib prefix="f" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%--
   Created by IntelliJ IDEA.
   User: 紫青
@@ -28,6 +29,11 @@
                     alert("请选择面试时间");
                     return false;
                 }
+                var date3=$("#span1").text();
+                if(Date.parse(name)-Date.parse(date3)<86400000){
+                    alert("面试只能选择今天之后的时间！！！");
+                    return false;
+                }
             })
 
             $("#input2").click(function(){
@@ -39,9 +45,13 @@
     </script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <jsp:include page="adminPage.jsp"></jsp:include>
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">求职简历：</h2><br>
+        <span id="span1" hidden>
+                    <jsp:useBean id="now" class="java.util.Date"/>
+                    <f:formatDate value="${now}" pattern="yyyy-MM-dd" />
+                </span>
         <table border="2px" cellpadding="10px" cellspacing="0" align="center">
             <tr>
                 <td>姓名：</td>

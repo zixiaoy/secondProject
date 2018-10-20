@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoy.dao.PayObjectionDao">
+
+    <insert id="savaPayObjection" parameterType="PayObjection">
+        INSERT INTO pay_objection(cause,money,status,pay_id,employee_id) VALUES(
+        #{cause},#{money},#{status},#{payId},#{employeeId});
+    </insert>
+
+    <update id="updatePayObjection">
+        UPDATE pay_objection SET status=#{1} WHERE id=#{0};
+    </update>
+
+    <select id="findPayObjectionByStatus" parameterType="int" resultType="PayObjection">
+        SELECT * FROM pay_objection WHERE status=#{status};
+    </select>
+
+    <select id="findAllPayObjection" resultType="PayObjection">
+        SELECT * FROM pay_objection;
+    </select>
+
+    <select id="findPayObjectionByPayId" resultType="PayObjection">
+        SELECT * FROM pay_objection WHERE pay_id=#{payId});
+    </select>
+</mapper>

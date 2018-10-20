@@ -26,6 +26,10 @@
                 var flag=confirm("是否确定此操作？");
                 return flag;
             })
+            $(".del00").click(function(){
+                var flag=confirm("确定删除此条反馈消息吗？");
+                return flag;
+            })
         })
     </script>
 </head>
@@ -98,7 +102,7 @@
                 <td>是否面试</td>
                 <td>面试时间</td>
                 <td>是否录取</td>
-                <td>操作</td>
+                <td colspan="2">操作</td>
             </tr>
             <form action="interviewVerify" method="post">
                 <c:forEach var="feedback" items="${requestScope.feedbackList}">
@@ -146,6 +150,14 @@
                                 <input type="submit" value="确定" class="input1" style="font-size:20px">
                             </td>
                         </c:if>
+                        <c:if test="${feedback.interview!=0}">
+                            <td>
+                                已操作
+                            </td>
+                        </c:if>
+                        <td>
+                            <a href="delFeekback?id=${feedback.id}&visitorId=${feedback.visitorId}" class="del00">删除</a>
+                        </td>
                     </tr>
                 </c:forEach>
             </form>

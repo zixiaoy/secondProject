@@ -16,6 +16,14 @@ public class ClockingIn {
     public ClockingIn() {
     }
 
+    public ClockingIn(Date businessHours, Date closingTime, int departmentId, int positionId, int employeeId) {
+        this.businessHours = businessHours;
+        this.closingTime = closingTime;
+        this.departmentId = departmentId;
+        this.positionId = positionId;
+        this.employeeId = employeeId;
+    }
+
     public ClockingIn(int id, Date businessHours, Date closingTime, int departmentId, int positionId, int employeeId) {
         this.id = id;
         this.businessHours = businessHours;

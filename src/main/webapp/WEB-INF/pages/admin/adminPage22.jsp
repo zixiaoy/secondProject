@@ -22,7 +22,7 @@
     </script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <jsp:include page="adminPage.jsp"></jsp:include>
 
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">发布招聘：</h2><br>

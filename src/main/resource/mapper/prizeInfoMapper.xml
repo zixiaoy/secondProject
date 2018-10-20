@@ -27,6 +27,10 @@
         SELECT * FROM prize_info WHERE employee_id=#{employeeId};
     </select>
 
+    <select id="findPrizeInfoByCreaTime" resultType="PrizeInfo">
+        SELECT * FROM prize_info WHERE crea_time LIKE CONCAT('%',#{0},'%') AND employee_id=#{1};
+    </select>
+
     <select id="findAllPrizeInfo" resultType="PrizeInfo">
         SELECT * FROM prize_info;
     </select>

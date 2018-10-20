@@ -12,5 +12,7 @@ import java.util.List;
 public interface PayDao {
     public boolean savePay(Pay pay);
     public List<Pay> findPayByEmployeeId(int employeeId);
+    public List<Pay> findPayByPayTime(String payTime);
+    public List<Pay> findPayByPayTimeAndEmployeeId(String payTime,int employeeId);
     public List<Pay> findAllPay();
 }

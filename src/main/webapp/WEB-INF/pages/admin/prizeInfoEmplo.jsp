@@ -19,25 +19,6 @@
     <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="/plugIn/js/main.js"></script>
 
-    <script>
-        $(function(){
-            $("#department1").change(function(){
-                $("#position1").empty();
-                var departmentId=$(this).val();
-                $.ajax({
-                    url:"departmentVerify",
-                    type:"post",
-                    dataType:"JSON",
-                    data:{"departmentId":departmentId},
-                    success:function(data){
-                        for(var i=0;i<data.length;i++){
-                            $("#position1").append("<option value="+data[i].id+">"+data[i].name+"</option>");
-                        }
-                    }
-                })
-            })
-        })
-    </script>
 </head>
 <body>
     <div class="limiter">

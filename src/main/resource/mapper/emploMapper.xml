@@ -2,24 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.xiaoy.dao.EmploDao">
     <insert id="saveEmplo" parameterType="Employee">
-        INSERT INTO employee VALUES(#{id},#{name},#{password},#{rank},#{creaTime},#{departmentId},#{positionId});
+        INSERT INTO employee VALUES(#{id},#{name},#{age},#{sex},#{tel},#{education},
+        #{email},#{rank},#{creaTime},#{basePay},#{departmentId},#{positionId});
     </insert>
 
-    <update id="updateEmploByPassword">
-        UPDATE employee set password=#{1} WHERE id=#{0};
-    </update>
-
     <update id="updateEmploByRank">
-        UPDATE employee set rank=#{1} WHERE id=#{0};
+        UPDATE employee set rank=#{1},base_pay=#{2} WHERE id=#{0};
     </update>
 
     <update id="updateEmploByPosition">
         UPDATE employee set department_id=#{1},position_id=#{2} WHERE id=#{0};
     </update>
 
-    <select id="findEmplo" resultType="Employee">
-        SELECT * FROM employee WHERE name=#{0} AND password=#{1};
-    </select>
+    <update id="updateEmplo">
+        UPDATE employee set age=#{1},tel=#{2},email=#{3} WHERE id=#{0};
+    </update>
 
     <select id="findEmploById" resultType="Employee">
         SELECT * FROM employee WHERE id=#{id};

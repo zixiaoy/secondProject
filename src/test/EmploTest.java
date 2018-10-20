@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+
 /**
  * Created by 紫青 on 2018/10/12.
  */
@@ -17,5 +18,10 @@ public class EmploTest {
     @Test
     public void testFindAllEmplo(){
         System.out.println(emploServ.findAllEmplo());
+    }
+
+    @Test
+    public void testUpdateEmplo(){
+        System.out.println(emploServ.updateEmploByPosition(2,1,2));
     }
 }

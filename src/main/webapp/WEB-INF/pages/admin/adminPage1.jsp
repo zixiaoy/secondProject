@@ -25,13 +25,13 @@
     </script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <jsp:include page="adminPage.jsp"></jsp:include>
 
 
     <div style="text-align:center">
-        <h2 style="color:brown;font-size:50px;text-align:left">应聘消息：</h2><br>
+        <h2 style="color:brown;font-size:50px;text-align:left">消息管理：</h2><br>
         <c:if test="${requestScope.candidateAll.size()==0}">
-            暂无应聘消息。。。
+            暂无消息。。。
         </c:if>
         <c:if test="${requestScope.candidateAll.size()!=0}">
             <table border="2px" cellspacing="0" cellpadding="10px" align="center">

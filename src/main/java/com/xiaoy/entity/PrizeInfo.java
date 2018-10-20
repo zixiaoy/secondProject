@@ -18,6 +18,16 @@ public class PrizeInfo {
     public PrizeInfo() {
     }
 
+    public PrizeInfo(int name, String cause, int money, Date creaTime, int departmentId, int positionId, int employeeId) {
+        this.name = name;
+        this.cause = cause;
+        this.money = money;
+        this.creaTime = creaTime;
+        this.departmentId = departmentId;
+        this.positionId = positionId;
+        this.employeeId = employeeId;
+    }
+
     public PrizeInfo(int id, int name, String cause, int money, Date creaTime, int departmentId, int positionId, int employeeId) {
         this.id = id;
         this.name = name;

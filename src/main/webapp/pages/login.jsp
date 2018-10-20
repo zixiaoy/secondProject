@@ -36,7 +36,7 @@
                         if(data=="123"){
                             $("#span").hide();
                             $("button").attr("disabled",true);
-                        }else if(data==456){
+                        }else if(data=="456"){
                             $("#span").show();
                             $("button").attr("disabled",true);
                         }else {

@@ -18,4 +18,9 @@ public class PayTest {
     public void testFindAllPay(){
         System.out.println(payServ.findAllPay());
     }
+
+    @Test
+    public void testFindPay(){
+        System.out.println(payServ.findPayByPayTimeAndEmployeeId("2018-10",1));
+    }
 }

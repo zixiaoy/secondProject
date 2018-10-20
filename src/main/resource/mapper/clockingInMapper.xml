@@ -22,4 +22,13 @@
     <select id="findEmployeeId" parameterType="int" resultType="ClockingIn">
         SELECT * FROM clocking_in WHERE employee_id=#{employeeId};
     </select>
+
+    <select id="findClockingInByDate" resultType="ClockingIn">
+        SELECT * FROM clocking_in WHERE business_hours LIKE CONCAT('%',#{businessHours},'%') OR closing_time LIKE CONCAT('%',#{closingTime},'%');
+    </select>
+
+    <select id="findClockingInByDateAndEmploId" resultType="ClockingIn">
+        SELECT * FROM clocking_in WHERE business_hours LIKE CONCAT('%',#{0},'%')
+        OR closing_time LIKE CONCAT('%',#{0},'%') AND employee_id=#{1};
+    </select>
 </mapper>

@@ -11,10 +11,9 @@ import java.util.List;
 @Repository
 public interface EmploDao {
     public boolean saveEmplo(Employee employee);
-    public boolean updateEmploByPassword(int id,String password);
-    public boolean updateEmploByRank(int id,int rank);
+    public boolean updateEmploByRank(int id,int rank,int basePay);
     public boolean updateEmploByPosition(int id,int departmentId,int positionId);
-    public Employee findEmplo(String name,String password);
+    public boolean updateEmplo(int id,int age,int tel,String email);
     public Employee findEmploById(int id);
     public List<Employee> findEmploByDepartmentId(int departmentId);
     public List<Employee> findEmploByPositionId(int positionId);

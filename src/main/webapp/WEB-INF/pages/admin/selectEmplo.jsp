@@ -15,12 +15,12 @@
     <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <jsp:include page="adminPage.jsp"></jsp:include>
 
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">部门职位：</h2><br>
         <c:if test="${requestScope.employeeList.size()==0}">
-            <span style="font-size:25px">${requestScope.department.name}/${requestScope.position.name}下暂无员工</span>
+            <span style="font-size:25px">${requestScope.department.name}/${requestScope.position.name}下暂无人员</span>
         </c:if>
         <c:if test="${requestScope.employeeList.size()!=0}">
             <table border="2px" cellspacing="0" cellpadding="10px" align="center" style="font-size:25px">
@@ -28,7 +28,6 @@
                     <td colspan="6">${requestScope.department.name}/${requestScope.position.name}：</td>
                 </tr>
                 <tr style="color: #0e1cc4">
-                    <td>员工账号</td>
                     <td>员工姓名</td>
                     <td>员工级别</td>
                     <td>入职时间</td>
@@ -38,7 +37,6 @@
                 <c:forEach var="emplo" items="${requestScope.employeeList}">
                     <tr>
                         <td>${emplo.name}</td>
-                        <td>hhh</td>
                         <td>
                             <c:if test="${emplo.rank==1}">
                                 试用期

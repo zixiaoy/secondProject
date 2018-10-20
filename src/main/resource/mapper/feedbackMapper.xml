@@ -32,7 +32,7 @@
     </select>
 
     <select id="findFeedbackByInterviewTime" resultType="Feedback">
-        SELECT * FROM feedback WHERE interview_time=#{interviewTime};
+        SELECT * FROM feedback WHERE interview_time LIKE CONCAT ('%',#{0},'%') AND visitor_id=#{1};
     </select>
 
     <select id="findFeedbackAll" resultType="Feedback">

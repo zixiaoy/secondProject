@@ -36,4 +36,12 @@ public class ClockingInServImpl implements ClockingInServ {
     public List<ClockingIn> findEmployeeId(int employeeId) {
         return clockingInDao.findEmployeeId(employeeId);
     }
+
+    public List<ClockingIn> findClockingInByDate(String date) {
+        return clockingInDao.findClockingInByDate(date);
+    }
+
+    public List<ClockingIn> findClockingInByDateAndEmploId(String date, int employeeId) {
+        return clockingInDao.findClockingInByDateAndEmploId(date, employeeId);
+    }
 }

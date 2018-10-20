@@ -16,5 +16,6 @@ public interface PrizeInfoDao {
     public List<PrizeInfo> findPrizeInfoByDepartmentId(int departmentId);
     public List<PrizeInfo> findPrizeInfoByPositionId(int positionId);
     public List<PrizeInfo> findPrizeInfoByEmployeeId(int employeeId);
+    public List<PrizeInfo> findPrizeInfoByCreaTime(String creatime,int employeeId);
     public List<PrizeInfo> findAllPrizeInfo();
 }

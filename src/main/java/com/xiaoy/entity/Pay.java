@@ -7,25 +7,35 @@ import java.util.Date;
  */
 public class Pay {
     private int id;
-    private int payTime;//发薪日
+    private Date payTime;//发薪日
     private double basePay;//基本工资
     private double performanceBonus;//绩效奖金
-    private double overtimePay;//加班费
     private double prizePay;//奖惩费用
     private double socialSecurity;//社保
+    private double allPay;//实际应发
     private int employeeId;
 
     public Pay() {
     }
 
-    public Pay(int id, int payTime, double basePay, double performanceBonus, double overtimePay, double prizePay, double socialSecurity, int employeeId) {
+    public Pay(Date payTime, double basePay, double performanceBonus, double prizePay, double socialSecurity, double allPay, int employeeId) {
+        this.payTime = payTime;
+        this.basePay = basePay;
+        this.performanceBonus = performanceBonus;
+        this.prizePay = prizePay;
+        this.socialSecurity = socialSecurity;
+        this.allPay = allPay;
+        this.employeeId = employeeId;
+    }
+
+    public Pay(int id, Date payTime, double basePay, double performanceBonus, double prizePay, double socialSecurity, double allPay, int employeeId) {
         this.id = id;
         this.payTime = payTime;
         this.basePay = basePay;
         this.performanceBonus = performanceBonus;
-        this.overtimePay = overtimePay;
         this.prizePay = prizePay;
         this.socialSecurity = socialSecurity;
+        this.allPay = allPay;
         this.employeeId = employeeId;
     }
 
@@ -37,11 +47,11 @@ public class Pay {
         this.id = id;
     }
 
-    public int getPayTime() {
+    public Date getPayTime() {
         return payTime;
     }
 
-    public void setPayTime(int payTime) {
+    public void setPayTime(Date payTime) {
         this.payTime = payTime;
     }
 
@@ -61,14 +71,6 @@ public class Pay {
         this.performanceBonus = performanceBonus;
     }
 
-    public double getOvertimePay() {
-        return overtimePay;
-    }
-
-    public void setOvertimePay(double overtimePay) {
-        this.overtimePay = overtimePay;
-    }
-
     public double getPrizePay() {
         return prizePay;
     }
@@ -83,6 +85,14 @@ public class Pay {
 
     public void setSocialSecurity(double socialSecurity) {
         this.socialSecurity = socialSecurity;
+    }
+
+    public double getAllPay() {
+        return allPay;
+    }
+
+    public void setAllPay(double allPay) {
+        this.allPay = allPay;
     }
 
     public int getEmployeeId() {
@@ -100,9 +110,9 @@ public class Pay {
                 ", payTime=" + payTime +
                 ", basePay=" + basePay +
                 ", performanceBonus=" + performanceBonus +
-                ", overtimePay=" + overtimePay +
                 ", prizePay=" + prizePay +
                 ", socialSecurity=" + socialSecurity +
+                ", allPay=" + allPay +
                 ", employeeId=" + employeeId +
                 '}';
     }

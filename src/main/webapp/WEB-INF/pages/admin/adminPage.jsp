@@ -17,7 +17,16 @@
     <script src="/plugIn/js/adapter.js"></script> <!--rem适配js-->
     <script src="/plugIn/js/menu.js"></script> <!--控制js-->
     <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
-
+    <script>
+        $(function(){
+            if(${requestScope.candidates!=null}&&${requestScope.candidates.size()!=0}){
+                alert("您有${requestScope.candidates.size()}条反馈消息未查看，请前往查看");
+            }
+            if(${requestScope.payObjections!=null}&&${requestScope.payObjections.size()!=0}){
+                alert("您有${requestScope.payObjections.size()}条薪资异议未查看，请前往查看");
+            }
+        })
+    </script>
 </head>
 <body  style="background-image: url('/plugIn/images/image3.jpg')">
     <div id="menu">
@@ -32,14 +41,14 @@
     <!--显示菜单-->
     <div id="open">
         <div class="navH">
-            <i style="color:red;font-size: 25px">当前用户：${sessionScope.visitor.name}</i>
+            <i style="color:red;font-size: 25px">${sessionScope.emplo.name}</i>
             <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
         </div>
         <div class="navBox">
             <ul>
                 <li>
                     <h2 class="obtain">
-                        <a href="admin1" style="color:#1acbfc">应聘消息</a>
+                        <a href="admin1" style="color:#1acbfc">消息管理</a>
                     </h2>
                 </li>
                 <li>

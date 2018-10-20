@@ -28,6 +28,9 @@
             $(":text").blur(function(){
                 var name=$(this).val();
                 var id=$("#input5").val();
+                if(id==""){
+                    return;
+                }
                 $.ajax({
                     url:"resetVerify",
                     type:"post",
@@ -38,7 +41,7 @@
                             $("#input1").hide();
                             flag1=true;
                             $("button").attr("disabled",true);
-                        }else {
+                        }else if(data=="456"){
                             flag1=false;
                             $("#input1").show();
                             $("button").attr("disabled",true);

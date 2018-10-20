@@ -20,20 +20,16 @@ public class EmploServImpl implements EmploServ {
         return emploDao.saveEmplo(employee);
     }
 
-    public boolean updateEmploByPassword(int id, String password) {
-        return emploDao.updateEmploByPassword(id, password);
-    }
-
-    public boolean updateEmploByRank(int id, int rank) {
-        return emploDao.updateEmploByRank(id, rank);
+    public boolean updateEmploByRank(int id, int rank, int basePay) {
+        return emploDao.updateEmploByRank(id, rank, basePay);
     }
 
     public boolean updateEmploByPosition(int id, int departmentId, int positionId) {
         return emploDao.updateEmploByPosition(id, departmentId, positionId);
     }
 
-    public Employee findEmplo(String name, String password) {
-        return emploDao.findEmplo(name, password);
+    public boolean updateEmplo(int id, int age, int tel, String email) {
+        return emploDao.updateEmplo(id, age, tel, email);
     }
 
     public Employee findEmploById(int id) {

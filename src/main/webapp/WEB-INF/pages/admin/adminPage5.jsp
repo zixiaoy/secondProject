@@ -39,7 +39,7 @@
     </script>
 </head>
 <body>
-    <jsp:include page="${pageContext.request.contextPath}/pages/adminPage.jsp"></jsp:include>
+    <jsp:include page="adminPage.jsp"></jsp:include>
 
     <span id="span1" hidden>
         <jsp:useBean id="now" class="java.util.Date"/>
@@ -49,17 +49,15 @@
         <h2 style="color:brown;font-size:50px;text-align:left">员工管理：</h2><br>
         <table border="2px" cellpadding="10px" cellspacing="0" align="center" style="font-size:25px">
             <tr>
-                <td colspan="7" style="color: #0e1cc4">所有员工：</td>
+                <td colspan="6" style="color: #0e1cc4">所有员工：</td>
             </tr>
             <tr style="color: #0e1cc4">
-                <td>账号</td>
                 <td>姓名</td>
                 <td colspan="5">操作</td>
             </tr>
             <c:forEach var="employee" items="${requestScope.employeeList}">
                 <tr>
-                    <td>${employee.name}</td>
-                    <td></td>
+                    <td><a href="emploDetail?id=${employee.id}">${employee.name}</a></td>
                     <td><a href="removeEmplo?id=${employee.id}">人事调动</a></td>
                     <td><a href="clockingInEmplo?id=${employee.id}">考勤</a></td>
                     <td><a href="prizeInfoEmplo?id=${employee.id}">奖惩</a></td>

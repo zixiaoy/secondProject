@@ -40,6 +40,10 @@ public class PrizeInfoServImpl implements PrizeInfoServ {
         return prizeInfoDao.findPrizeInfoByEmployeeId(employeeId);
     }
 
+    public List<PrizeInfo> findPrizeInfoByCreaTime(String creatime, int employeeId) {
+        return prizeInfoDao.findPrizeInfoByCreaTime(creatime, employeeId);
+    }
+
     public List<PrizeInfo> findAllPrizeInfo() {
         return prizeInfoDao.findAllPrizeInfo();
     }

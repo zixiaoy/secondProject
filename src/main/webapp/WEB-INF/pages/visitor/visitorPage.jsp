@@ -22,7 +22,7 @@
 
     <script>
         $(function(){
-            if(${requestScope.feedbacks.size()!=0}){
+            if(${requestScope.feedbacks!=null}&&${requestScope.feedbacks.size()!=0}){
                 alert("您有${requestScope.feedbacks.size()}条反馈消息未查看，请前往查看");
             }
             $("#input6").click(function(){

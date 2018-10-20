@@ -45,8 +45,8 @@ public class FeedbackServImpl implements FeedbackServ {
         return feedbackDao.findFeedbackByCreaTime(creaTime);
     }
 
-    public List<Feedback> findFeedbackByInterviewTime(Date interviewTime) {
-        return feedbackDao.findFeedbackByInterviewTime(interviewTime);
+    public List<Feedback> findFeedbackByInterviewTime(String interviewTime,int visitorId) {
+        return feedbackDao.findFeedbackByInterviewTime(interviewTime,visitorId);
     }
 
     public List<Feedback> findFeedbackAll() {

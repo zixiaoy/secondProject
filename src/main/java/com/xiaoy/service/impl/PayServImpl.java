@@ -24,6 +24,14 @@ public class PayServImpl implements PayServ {
         return payDao.findPayByEmployeeId(employeeId);
     }
 
+    public List<Pay> findPayByPayTime(String payTime) {
+        return payDao.findPayByPayTime(payTime);
+    }
+
+    public List<Pay> findPayByPayTimeAndEmployeeId(String payTime, int employeeId) {
+        return payDao.findPayByPayTimeAndEmployeeId(payTime, employeeId);
+    }
+
     public List<Pay> findAllPay() {
         return payDao.findAllPay();
     }

@@ -1,13 +1,7 @@
 package com.xiaoy.handler;
 
-import com.xiaoy.entity.Feedback;
-import com.xiaoy.entity.Recruit;
-import com.xiaoy.entity.Resume;
-import com.xiaoy.entity.Visitor;
-import com.xiaoy.service.FeedbackServ;
-import com.xiaoy.service.RecruitServ;
-import com.xiaoy.service.ResumeServ;
-import com.xiaoy.service.VisitorServ;
+import com.xiaoy.entity.*;
+import com.xiaoy.service.*;
 import com.xiaoy.util.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -32,6 +29,14 @@ public class VisitorControl {
     private ResumeServ resumeServ;
     @Autowired
     private FeedbackServ feedbackServ;
+    @Autowired
+    private EmploServ emploServ;
+    @Autowired
+    private CandidateServ candidateServ;
+    @Autowired
+    private CultivateServ cultivateServ;
+    @Autowired
+    private PayObjectionServ payObjectionServ;
 
     @RequestMapping("regist")
     public String regist(){
@@ -70,12 +75,37 @@ public class VisitorControl {
     public String findVisitor(Visitor visitor,HttpSession session,ModelMap model){
         visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
-        List<Recruit> recruits=recruitServ.findAllRecruit();
-        List<Feedback> feedbacks=feedbackServ.findFeedbackByVisitorIdAndStatus(visitor1.getId(),1);
-        model.addAttribute("feedbacks",feedbacks);
-        session.setAttribute("visitor",visitor1);
-        session.setAttribute("recruits",recruits);
-        return "visitor/visitorPage";
+        Employee employee=emploServ.findEmploById(visitor1.getId());
+        if(employee==null){
+            List<Recruit> recruits=recruitServ.findAllRecruit();
+            List<Feedback> feedbacks=feedbackServ.findFeedbackByVisitorIdAndStatus(visitor1.getId(),1);
+            model.addAttribute("feedbacks",feedbacks);
+            session.setAttribute("visitor",visitor1);
+            session.setAttribute("recruits",recruits);
+            return "visitor/visitorPage";
+        }else{
+            session.setAttribute("emplo",employee);
+            if(employee.getRank()==1||employee.getRank()==2){
+                List<Cultivate> cultivates=cultivateServ.findCultivateByDepartmentId(employee.getDepartmentId());
+                List<Cultivate> cultivates1=new ArrayList<Cultivate>();
+                Date date=new Date();
+                SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
+                String date2=dateFormat.format(date);
+                for(Cultivate clt:cultivates){
+                    if(dateFormat.format(clt.getCultivateTime()).compareToIgnoreCase(date2)>0){
+                        cultivates1.add(clt);
+                    }
+                }
+                model.addAttribute("cultivates",cultivates1);
+                return "emplo/emploPage";
+            }else {
+                List<Candidate> candidates=candidateServ.findCandidateByStatus(1);
+                List<PayObjection> payObjections=payObjectionServ.findPayObjectionByStatus(1);
+                model.addAttribute("payObjections",payObjections);
+                model.addAttribute("candidates",candidates);
+                return "admin/adminPage";
+            }
+        }
     }
 
     @RequestMapping("loginVerify")
@@ -84,7 +114,7 @@ public class VisitorControl {
         password=MD5.md5(password);
         Visitor visitor=visitorServ.findVisitor(name,password);
         if(visitor==null){
-            if(name==""||password==""){
+            if(name==""||password.equals("d41d8cd98f00b204e9800998ecf8427e")){
                 return "123";
             }else {
                 return "456";
@@ -136,7 +166,7 @@ public class VisitorControl {
 
     @RequestMapping("visitor5")
     public String visitor5(){
-        return "resetPasswords";
+        return "visitor/updatePassword";
     }
 
     @RequestMapping("visitor1")
@@ -144,5 +174,11 @@ public class VisitorControl {
         List<Feedback> feedbackList=feedbackServ.findFeedbackByVisitorId(visitorId);
         model.addAttribute("feedbackList",feedbackList);
         return "visitor/visitorPage1";
+    }
+
+    @RequestMapping("delFeekback")
+    public String delFeekback(int id,int visitorId){
+        feedbackServ.delFeedback(id);
+        return "forward:/pages/visitor1";
     }
 }
