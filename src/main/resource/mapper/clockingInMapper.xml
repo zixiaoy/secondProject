@@ -11,14 +11,6 @@
         UPDATE clocking_in SET closing_time=#{1} WHERE id=#{0};
     </update>
 
-    <select id="findDepartmentId" parameterType="int" resultType="ClockingIn">
-        SELECT * FROM clocking_in WHERE department_id=#{departmentId};
-    </select>
-
-    <select id="findPositionId" parameterType="int" resultType="ClockingIn">
-        SELECT * FROM clocking_in WHERE position_id=#{positionId};
-    </select>
-
     <select id="findEmployeeId" parameterType="int" resultType="ClockingIn">
         SELECT * FROM clocking_in WHERE employee_id=#{employeeId};
     </select>
@@ -29,6 +21,6 @@
 
     <select id="findClockingInByDateAndEmploId" resultType="ClockingIn">
         SELECT * FROM clocking_in WHERE business_hours LIKE CONCAT('%',#{0},'%')
-        OR closing_time LIKE CONCAT('%',#{0},'%') AND employee_id=#{1};
+        AND employee_id=#{1};
     </select>
 </mapper>

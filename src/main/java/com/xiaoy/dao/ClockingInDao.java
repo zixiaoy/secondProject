@@ -13,8 +13,6 @@ import java.util.List;
 public interface ClockingInDao {
     public boolean saveClockingIn(ClockingIn clockingIn);
     public boolean updateClockingIn(int id,Date closingTime);
-    public List<ClockingIn> findDepartmentId(int departmentId);
-    public List<ClockingIn> findPositionId(int positionId);
     public List<ClockingIn> findEmployeeId(int employeeId);
     public List<ClockingIn> findClockingInByDate(String date);
     public List<ClockingIn> findClockingInByDateAndEmploId(String date,int employeeId);

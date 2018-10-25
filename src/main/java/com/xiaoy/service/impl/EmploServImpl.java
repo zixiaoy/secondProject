@@ -48,11 +48,4 @@ public class EmploServImpl implements EmploServ {
         return emploDao.findAllEmplo();
     }
 
-    public boolean delEmplo(int id) {
-        return emploDao.delEmplo(id);
-    }
-
-    public Employee findEmploByName(String name) {
-        return emploDao.findEmploByName(name);
-    }
 }

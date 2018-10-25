@@ -27,7 +27,8 @@
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">发布招聘：</h2><br>
         <c:if test="${requestScope.recruits.size()==0}">
-            <span style="font-size:30px">暂无招聘信息</span>
+            <span style="font-size:30px">暂无招聘信息。。。</span>
+            <a href="admin22" style="font-size:25px">新增招聘</a>
         </c:if>
         <c:if test="${requestScope.recruits.size()!=0}">
             <table border="2px" cellpadding="10px" cellspacing="0" align="center">
@@ -44,10 +45,29 @@
                     <tr>
                         <td>${recruit.companyName}</td>
                         <td>${recruit.companyAddress}</td>
-                        <td>${recruit.departmentId}</td>
-                        <td>${recruit.positionId}</td>
+                        <td>
+                            <c:forEach var="department" items="${requestScope.departments}">
+                                <c:if test="${department.id==recruit.departmentId}">
+                                    ${department.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:forEach var="position" items="${requestScope.positions}">
+                                <c:if test="${position.id==recruit.positionId}">
+                                    ${position.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td>${recruit.basePay}</td>
-                        <td>${recruit.intro}</td>
+                        <td>
+                            <c:if test="${recruit.intro==null}">
+                                未填写
+                            </c:if>
+                            <c:if test="${recruit.intro!=null}">
+                                ${recruit.intro}
+                            </c:if>
+                        </td>
                         <td><a href="delRecruit?id=${recruit.id}" class="del">删除</a></td>
                     </tr>
                 </c:forEach>

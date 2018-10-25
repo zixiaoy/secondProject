@@ -19,6 +19,18 @@
     <script src="/plugIn/vendor/jquery/jquery-3.2.1.min.js"></script>
     <script src="/plugIn/js/main.js"></script>
 
+    <script>
+        $(function(){
+            $("button").click(function(){
+                var name=$(":text").val();
+                if(name==""){
+                    alert("请输入奖惩原因");
+                    return false;
+                }
+            })
+        })
+    </script>
+
 </head>
 <body>
     <div class="limiter">

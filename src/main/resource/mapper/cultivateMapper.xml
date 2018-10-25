@@ -20,14 +20,14 @@
     </select>
 
     <select id="findCultivateByDepartmentId" resultType="Cultivate">
-        SELECT * FROM cultivate WHERE department_id=#{departmentId};
+        SELECT * FROM cultivate WHERE department_id=#{departmentId} ORDER BY cultivate_time DESC;
     </select>
 
     <select id="findCultivateByCultivateTime" resultType="Cultivate">
-        SELECT * FROM cultivate WHERE cultivate_time like CONCAT('%',#{cultivateTime},'%');
+        SELECT * FROM cultivate WHERE cultivate_time like CONCAT('%',#{cultivateTime},'%') ORDER BY cultivate_time DESC;
     </select>
 
     <select id="findAllCultivate" resultType="Cultivate">
-        SELECT * FROM cultivate;
+        SELECT * FROM cultivate ORDER BY cultivate_time DESC;
     </select>
 </mapper>

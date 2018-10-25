@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface DepartmentServ {
     public boolean saveDepartment(Department department);
-    public boolean updateDepartment(int id, String name);
     public boolean delDepartment(int id);
     public Department findDepartmentById(int id);
     public List<Department> findAllDepartment();

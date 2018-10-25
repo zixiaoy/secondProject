@@ -31,12 +31,18 @@
                     <td>异议原因</td>
                     <td>异议金额</td>
                     <td>是否查看</td>
-                    <td>异议薪资ID</td>
+                    <td>异议薪资编号</td>
                     <td>生成奖惩</td>
                 </tr>
                 <c:forEach var="payObjection" items="${requestScope.payObjectionList}">
                     <tr>
-                        <td>${payObjection.employeeId}</td>
+                        <td>
+                            <c:forEach var="employee" items="${requestScope.employees}">
+                                <c:if test="${employee.id==payObjection.employeeId}">
+                                    ${employee.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td>${payObjection.cause}</td>
                         <td>${payObjection.money}</td>
                         <td>
@@ -47,7 +53,7 @@
                                 已查看
                             </c:if>
                         </td>
-                        <td>${payObjection.payId}</td>
+                        <td><a href="updatePayObjection?id=${payObjection.payId}">${payObjection.payId}</a></td>
                         <td><a href="prizeInfoEmplo?id=${payObjection.employeeId}">奖惩</a></td>
                     </tr>
                 </c:forEach>

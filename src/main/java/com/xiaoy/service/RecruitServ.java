@@ -9,10 +9,8 @@ import java.util.List;
  */
 public interface RecruitServ {
     public boolean saveRecruit(Recruit recruit);
-    public boolean updateRecruit(Recruit recruit);
     public boolean delRecruit(int id);
     public List<Recruit> findRecruitByDepartmentId(int departmentId);
     public Recruit findRecruitByPositionId(int positionId);
-    public List<Recruit> findRecruitByCompanyAddress(String companyAddress);
     public List<Recruit> findAllRecruit();
 }

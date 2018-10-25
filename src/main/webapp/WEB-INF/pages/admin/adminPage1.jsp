@@ -31,10 +31,16 @@
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">消息管理：</h2><br>
         <c:if test="${requestScope.candidateAll.size()==0}">
-            暂无消息。。。
+            <span style="font-size:25px">暂无应聘消息。。。</span>
+            <a href="admin11" style="color:#007bff;font-size:25px">(查看面试信息)</a>
         </c:if>
         <c:if test="${requestScope.candidateAll.size()!=0}">
             <table border="2px" cellspacing="0" cellpadding="10px" align="center">
+                <tr>
+                    <td colspan="5">
+                        应聘信息：<a href="admin11" style="color:#007bff">(查看面试信息)</a>
+                    </td>
+                </tr>
                 <tr>
                     <td>应聘者</td>
                     <td>投递时间</td>
@@ -44,14 +50,20 @@
                 </tr>
                 <c:forEach var="candidate" items="${requestScope.candidateAll}">
                     <tr>
-                        <td>${candidate.visitorId}</td>
+                        <td>
+                            <c:forEach var="visitor" items="${requestScope.visitors}">
+                                <c:if test="${visitor.id==candidate.visitorId}">
+                                    ${visitor.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td><f:formatDate value="${candidate.creaTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
                         <td>
                             <c:if test="${candidate.status==1}">
                                 <a href="status.do?visitorId=${candidate.visitorId}&id=${candidate.id}&creaTime=${candidate.creaTime}">查看</a>
                             </c:if>
                             <c:if test="${candidate.status==2}">
-                                已查看
+                                <a href="status.do?visitorId=${candidate.visitorId}&id=${candidate.id}&creaTime=${candidate.creaTime}">已查看</a>
                             </c:if>
                         </td>
                         <td>

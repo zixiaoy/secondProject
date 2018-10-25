@@ -1,13 +1,15 @@
 package com.xiaoy.handler;
 
+import com.alibaba.fastjson.JSON;
 import com.xiaoy.entity.*;
 import com.xiaoy.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.text.ParseException;
+import java.io.UnsupportedEncodingException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -39,6 +41,8 @@ public class EmploControl {
     public String emplo1(int id, ModelMap model){
         Employee employee=emploServ.findEmploById(id);
         List<Cultivate> cultivateList=cultivateServ.findCultivateByDepartmentId(employee.getDepartmentId());
+        List<Department> departments=departmentServ.findAllDepartment();
+        model.addAttribute("departments",departments);
         model.addAttribute("cultivateList",cultivateList);
         return "emplo/emploPage1";
     }
@@ -63,8 +67,20 @@ public class EmploControl {
     @RequestMapping("emplo4")
     public String emplo4(int id, ModelMap model){
         List<ClockingIn> clockingInList=clockingInServ.findEmployeeId(id);
+        List<Department> departments=departmentServ.findAllDepartment();
+        List<Position> positions=positionServ.findAllPosition();
+        model.addAttribute("departments",departments);
+        model.addAttribute("positions",positions);
         model.addAttribute("clockingInList",clockingInList);
         return "emplo/emploPage4";
+    }
+
+    @RequestMapping(value = "clockingInVerify",produces="application/json; charset=utf-8")
+    @ResponseBody
+    public String clockingInVerify(String year,int emploId){
+        List<ClockingIn> clockingInList=clockingInServ.findClockingInByDateAndEmploId(year,emploId);
+        String json=JSON.toJSONString(clockingInList);
+        return json;
     }
 
     @RequestMapping("emplo5")
@@ -81,17 +97,25 @@ public class EmploControl {
         return "emplo/emploPage6";
     }
 
+    @RequestMapping(value = "emploPayVerify",produces="application/json; charset=utf-8")
+    @ResponseBody
+    public String emploPayVerify(String year,int emploId){
+        List<Pay> payList=payServ.findPayByPayTimeAndEmployeeId(year,emploId);
+        String json= JSON.toJSONString(payList);
+        return json;
+    }
+
     @RequestMapping("addClockingIn")
-    public String addClockingIn(int id,int num){
+    public String addClockingIn(int id,int num) throws UnsupportedEncodingException {
         Employee employee=emploServ.findEmploById(id);
         Date date=new Date();
-        if(num>=0){
-            prizeInfoServ.savePrizeInfo(new PrizeInfo(2,"迟到",20,date,employee.getDepartmentId(),employee.getPositionId(),id));
-        }
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
-        List<ClockingIn> clockingInList=clockingInServ.findClockingInByDate(dateFormat.format(date));
+        List<ClockingIn> clockingInList=clockingInServ.findClockingInByDateAndEmploId(dateFormat.format(date),id);
         if(clockingInList.size()==0){
             clockingInServ.saveClockingIn(new ClockingIn(date,null,employee.getDepartmentId(),employee.getPositionId(),id));
+            if(num>=0){
+                prizeInfoServ.savePrizeInfo(new PrizeInfo(2,new String("迟到".getBytes("gbk"),"utf-8"),20,date,employee.getDepartmentId(),employee.getPositionId(),id));
+            }
         }
         return "forward:/pages/emplo4";
     }
@@ -119,5 +143,22 @@ public class EmploControl {
             payObjectionServ.savaPayObjection(payObjection);
         }
         return "emplo/emploPage";
+    }
+
+    @RequestMapping("emplo3")
+    public String emplo3(ModelMap model){
+        List<Department> departments=departmentServ.findAllDepartment();
+        model.addAttribute("departments",departments);
+        return "emplo/emploPage3";
+    }
+
+    @RequestMapping("selectPositions")
+    public String selectPositions(int departmentId,ModelMap model){
+        Department department=departmentServ.findDepartmentById(departmentId);
+        List<Position> positionList=positionServ.findPositionByDepartmentId(departmentId);
+        model.addAttribute("department",department);
+        model.addAttribute("positionList",positionList);
+        model.addAttribute("departmentId",departmentId);
+        return "emplo/selectPositions";
     }
 }

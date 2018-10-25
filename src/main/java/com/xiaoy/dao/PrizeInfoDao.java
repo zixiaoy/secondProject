@@ -14,7 +14,6 @@ public interface PrizeInfoDao {
     public boolean delPrizeInfo(int id);
     public boolean updatePrizeInfo(int id,String cause);
     public List<PrizeInfo> findPrizeInfoByDepartmentId(int departmentId);
-    public List<PrizeInfo> findPrizeInfoByPositionId(int positionId);
     public List<PrizeInfo> findPrizeInfoByEmployeeId(int employeeId);
     public List<PrizeInfo> findPrizeInfoByCreaTime(String creatime,int employeeId);
     public List<PrizeInfo> findAllPrizeInfo();

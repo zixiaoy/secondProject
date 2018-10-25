@@ -20,11 +20,11 @@ public class ClockingInTest {
 
     @Test
     public void testFindDepartmentId() throws ParseException {
-        Date date=new Date();
+        /*Date date=new Date();
         SimpleDateFormat dateFormat=new SimpleDateFormat("yyyy-MM-dd");
         dateFormat.format(date);
         Date date1=new SimpleDateFormat("yyyy-MM-dd").parse("2018-10-19");
-        System.out.println(dateFormat.format(date));
-        System.out.println(clockingInServ.findClockingInByDate("2018-10"));
+        System.out.println(dateFormat.format(date));*/
+        System.out.println(clockingInServ.findClockingInByDateAndEmploId("2018-10",2));
     }
 }

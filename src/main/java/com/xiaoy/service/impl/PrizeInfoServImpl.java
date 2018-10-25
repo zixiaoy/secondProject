@@ -32,10 +32,6 @@ public class PrizeInfoServImpl implements PrizeInfoServ {
         return prizeInfoDao.findPrizeInfoByDepartmentId(departmentId);
     }
 
-    public List<PrizeInfo> findPrizeInfoByPositionId(int positionId) {
-        return prizeInfoDao.findPrizeInfoByPositionId(positionId);
-    }
-
     public List<PrizeInfo> findPrizeInfoByEmployeeId(int employeeId) {
         return prizeInfoDao.findPrizeInfoByEmployeeId(employeeId);
     }

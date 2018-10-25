@@ -25,14 +25,6 @@ public class ClockingInServImpl implements ClockingInServ {
         return clockingInDao.updateClockingIn(id, closingTime);
     }
 
-    public List<ClockingIn> findDepartmentId(int departmentId) {
-        return clockingInDao.findDepartmentId(departmentId);
-    }
-
-    public List<ClockingIn> findPositionId(int positionId) {
-        return clockingInDao.findPositionId(positionId);
-    }
-
     public List<ClockingIn> findEmployeeId(int employeeId) {
         return clockingInDao.findEmployeeId(employeeId);
     }

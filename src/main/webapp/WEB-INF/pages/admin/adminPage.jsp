@@ -31,71 +31,71 @@
 <body  style="background-image: url('/plugIn/images/image3.jpg')">
     <div id="menu">
     <!--隐藏菜单-->
-    <div id="ensconce">
-        <h2>
-            <img src="/plugIn/images/show.jpg">
-            <span style="color:rosybrown">人力资源系统</span>
-        </h2>
-    </div>
+        <div id="ensconce">
+            <h2>
+                <img src="/plugIn/images/show.jpg">
+                <span style="color:rosybrown">人力资源系统</span>
+            </h2>
+        </div>
 
-    <!--显示菜单-->
-    <div id="open">
-        <div class="navH">
-            <i style="color:red;font-size: 25px">${sessionScope.emplo.name}</i>
-            <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
-        </div>
-        <div class="navBox">
-            <ul>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin1" style="color:#1acbfc">消息管理</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin2" style="color:#1acbfc">发布招聘</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin3" style="color:#1acbfc">部门职位</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin4" style="color:#1acbfc">培训管理</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin5" style="color:#1acbfc">员工管理</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin6" style="color:#1acbfc">奖惩管理</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin7" style="color:#1acbfc">薪资管理</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="admin8" style="color:#1acbfc">工资异议</a>
-                    </h2>
-                </li>
-                <li>
-                    <h2 class="obtain">
-                        <a href="${pageContext.request.contextPath}/pages/login.jsp" style="color:#1acbfc">
-                            退出
-                        </a>
-                    </h2>
-                </li>
-            </ul>
+        <!--显示菜单-->
+        <div id="open">
+            <div class="navH">
+                <i style="color:red;font-size: 25px">${sessionScope.emplo.name}</i>
+                <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
+            </div>
+            <div class="navBox">
+                <ul>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin1" style="color:#1acbfc">消息管理</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin2" style="color:#1acbfc">发布招聘</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin3" style="color:#1acbfc">部门职位</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin4" style="color:#1acbfc">培训管理</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin5" style="color:#1acbfc">员工管理</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin6" style="color:#1acbfc">奖惩管理</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin7" style="color:#1acbfc">薪资管理</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="admin8" style="color:#1acbfc">工资异议</a>
+                        </h2>
+                    </li>
+                    <li>
+                        <h2 class="obtain">
+                            <a href="${pageContext.request.contextPath}/pages/login.jsp" style="color:#1acbfc">
+                                退出
+                            </a>
+                        </h2>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
 </body>
 </html>

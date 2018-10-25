@@ -25,6 +25,11 @@
             $("button").click(function(){
                 var date2=$("#date1").val();
                 var date3=$("#span1").text();
+                var name=$(":text").val();
+                if(name==""||date2==""){
+                    alert("请输入培训名称或培训时间");
+                    return false;
+                }
                 if(Date.parse(date2)-Date.parse(date3)<86400000){
                     alert("培训只能选择今天之后的时间！！！");
                     return false;

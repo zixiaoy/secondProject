@@ -34,11 +34,4 @@
         SELECT * FROM employee;
     </select>
 
-    <delete id="delEmplo" parameterType="int">
-        DELETE FROM employee WHERE id=#{id};
-    </delete>
-
-    <select id="findEmploByName" parameterType="String" resultType="Employee">
-        SELECT * FROM employee WHERE name=#{name};
-    </select>
 </mapper>

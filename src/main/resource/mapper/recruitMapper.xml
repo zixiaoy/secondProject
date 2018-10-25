@@ -7,11 +7,6 @@
         #{companyName},#{companyAddress},#{departmentId},#{positionId},#{basePay},#{intro});
     </insert>
 
-    <update id="updateRecruit" parameterType="Recruit">
-        UPDATE recruit SET company_name=#{companyName},company_address=#{companyAddress},
-        department_id=#{departmentId},position_id=#{positionId},base_pay=#{basePay},intro=#{intro} WHERE id=#{id};
-    </update>
-
     <delete id="delRecruit" parameterType="int">
         DELETE FROM recruit WHERE id=#{id};
     </delete>
@@ -22,10 +17,6 @@
 
     <select id="findRecruitByPositionId" resultType="Recruit">
         SELECT * FROM recruit WHERE position_id=#{positionId};
-    </select>
-
-    <select id="findRecruitByCompanyAddress" resultType="Recruit">
-        SELECT * FROM recruit WHERE company_address LIKE #{companyAddress};
     </select>
 
     <select id="findAllRecruit" resultType="Recruit">

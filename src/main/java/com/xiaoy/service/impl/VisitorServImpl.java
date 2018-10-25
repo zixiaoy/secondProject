@@ -27,10 +27,6 @@ public class VisitorServImpl implements VisitorServ {
         return visitorDao.updateVisitor(visitor);
     }
 
-    public boolean delVisitor(int id) {
-        return visitorDao.delVisitor(id);
-    }
-
     public Visitor findVisitor(String name, String password) {
         return visitorDao.findVisitor(name,password);
     }
@@ -41,5 +37,9 @@ public class VisitorServImpl implements VisitorServ {
 
     public Visitor findVisitorByName(String name) {
         return visitorDao.findVisitorByName(name);
+    }
+
+    public Visitor findVisitorById(int id) {
+        return visitorDao.findVisitorById(id);
     }
 }

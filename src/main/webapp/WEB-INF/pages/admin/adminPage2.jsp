@@ -21,6 +21,14 @@
 
     <script>
         $(function(){
+            $("button").click(function(){
+                var a=$("#inp00").val();
+                var b=$("#inp000").val();
+                if(a==""||b==""){
+                    alert("请输入公司名称或公司地址");
+                    return false;
+                }
+            })
             $("#department1").change(function(){
                 $("#position1").empty();
                 var departmentId=$(this).val();
@@ -47,12 +55,12 @@
                     <span class="login100-form-title p-b-49">新建招聘</span>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="请输入公司名称">
-                        <input class="input100" type="text" name="companyName" placeholder="公司名称">
+                        <input class="input100" type="text" name="companyName" id="inp00" placeholder="公司名称">
                         <span class="focus-input100" style="text-align:right;color:red"></span>
                     </div>
 
                     <div class="wrap-input100 validate-input m-b-23" data-validate="请输入公司地址">
-                        <input class="input100" type="text" name="companyAddress" placeholder="公司地址">
+                        <input class="input100" type="text" name="companyAddress" id="inp000" placeholder="公司地址">
                         <span class="focus-input100" style="text-align:right;color:red"></span>
                     </div>
 
@@ -80,6 +88,11 @@
                             <option value="12001-15000">12001-15000</option>
                             <option value="15001-20000">15001-20000</option>
                         </select>
+                    </div>
+
+                    <div class="wrap-input100 validate-input m-b-23" data-validate="请输入">
+                        <input class="input100" type="text" name="intro" placeholder="职位信息">
+                        <span class="focus-input100" style="text-align:right;color:red"></span>
                     </div>
 
                     <div class="text-left p-t-8 p-b-31">

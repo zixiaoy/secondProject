@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import java.io.UnsupportedEncodingException;
+
 /**
  * Created by 紫青 on 2018/10/12.
  */
@@ -20,7 +22,10 @@ public class PayTest {
     }
 
     @Test
-    public void testFindPay(){
-        System.out.println(payServ.findPayByPayTimeAndEmployeeId("2018-10",1));
+    public void testFindPay() throws UnsupportedEncodingException {
+//        System.out.println(payServ.findPayByPayTimeAndEmployeeId("2018-10",1));
+        String a="你好";
+        String b=new String("你好".getBytes("gbk"),"utf-8");
+        System.out.println(b);
     }
 }

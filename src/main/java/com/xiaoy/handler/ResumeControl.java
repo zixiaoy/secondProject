@@ -50,9 +50,10 @@ public class ResumeControl {
     }
 
     @RequestMapping("resume.do")
-    public String resume(Resume resume, HttpSession session){
-        System.out.println(resume);
-        resumeServ.saveResume(resume);
+    public String resume(Resume resume){
+        if(resumeServ.findResumeByVisitorId(resume.getVisitorId())==null){
+            resumeServ.saveResume(resume);
+        }
         return "visitor/visitorPage";
     }
 }

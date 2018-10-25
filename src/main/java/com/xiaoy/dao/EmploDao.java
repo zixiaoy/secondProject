@@ -18,6 +18,4 @@ public interface EmploDao {
     public List<Employee> findEmploByDepartmentId(int departmentId);
     public List<Employee> findEmploByPositionId(int positionId);
     public List<Employee> findAllEmplo();
-    public boolean delEmplo(int id);
-    public Employee findEmploByName(String name);
 }

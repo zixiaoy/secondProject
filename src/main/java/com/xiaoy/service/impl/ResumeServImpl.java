@@ -28,11 +28,4 @@ public class ResumeServImpl implements ResumeServ {
         return resumeDao.findResumeByVisitorId(visitorId);
     }
 
-    public List<Resume> findResumeByDepartmentId(int departmentId) {
-        return resumeDao.findResumeByDepartmentId(departmentId);
-    }
-
-    public List<Resume> findResumeByPositionId(int positionId) {
-        return resumeDao.findResumeByPositionId(positionId);
-    }
 }

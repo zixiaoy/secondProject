@@ -19,10 +19,6 @@
         SELECT * FROM prize_info WHERE department_id=#{departmentId};
     </select>
 
-    <select id="findPrizeInfoByPositionId" parameterType="int" resultType="PrizeInfo">
-        SELECT * FROM prize_info WHERE position_id=#{positionId};
-    </select>
-
     <select id="findPrizeInfoByEmployeeId" parameterType="int" resultType="PrizeInfo">
         SELECT * FROM prize_info WHERE employee_id=#{employeeId};
     </select>

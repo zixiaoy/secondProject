@@ -46,7 +46,7 @@
     <!--显示菜单-->
     <div id="open">
         <div class="navH">
-            <i style="color:red;font-size: 25px">当前用户：${sessionScope.visitor.name}</i>
+            <i style="color:red;font-size: 25px">${sessionScope.visitor.name}</i>
             <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
         </div>
         <div class="navBox">
@@ -97,6 +97,7 @@
         <table border="2px" cellpadding="10px" cellspacing="0" align="center">
             <tr>
                 <td>应聘公司</td>
+                <td>公司地址</td>
                 <td>投递时间</td>
                 <td>查看状态</td>
                 <td>是否面试</td>
@@ -107,7 +108,20 @@
             <form action="interviewVerify" method="post">
                 <c:forEach var="feedback" items="${requestScope.feedbackList}">
                     <tr>
-                        <td>${feedback.recruitId}</td>
+                        <td>
+                            <c:forEach var="recruit" items="${requestScope.recruits}">
+                                <c:if test="${recruit.id==feedback.recruitId}">
+                                    ${recruit.companyName}
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:forEach var="recruit" items="${requestScope.recruits}">
+                                <c:if test="${recruit.id==feedback.recruitId}">
+                                    ${recruit.companyAddress}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td><f:formatDate value="${feedback.creaTime}" pattern="yyyy-MM-dd"></f:formatDate></td>
                         <td>
                             <c:if test="${feedback.status==1}">

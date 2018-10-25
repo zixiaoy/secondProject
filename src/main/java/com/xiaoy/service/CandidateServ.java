@@ -14,7 +14,5 @@ public interface CandidateServ {
     public boolean delCandidate(int id);
     public Candidate findCandidateByVisitorId(int visitorId);
     public List<Candidate> findCandidateByStatus(int status);
-    public List<Candidate> findCandidateByInterview(int interview);
-    public List<Candidate> findCandidateByCreaTime(Date creaTime);
     public List<Candidate> findCandidateAll();
 }

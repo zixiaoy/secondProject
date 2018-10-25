@@ -18,7 +18,7 @@
     <div style="text-align:center">
         <h2 style="color:brown;font-size:40px;text-align:left">消息管理：</h2><br>
         <c:if test="${requestScope.cultivateList.size()==0}">
-            暂无消息通知。。。
+            <span style="font-size:25px">暂无消息通知。。。</span>
         </c:if>
         <c:if test="${requestScope.cultivateList.size()!=0}">
             <table border="2px" cellspacing="0" cellpadding="10px" align="center" style="font-size:25px">
@@ -36,7 +36,13 @@
                         <td>${cultivate.name}</td>
                         <td><f:formatDate value="${cultivate.creaTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td><f:formatDate value="${cultivate.cultivateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                        <td>${cultivate.departmentId}</td>
+                        <td>
+                            <c:forEach var="department" items="${requestScope.departments}">
+                                <c:if test="${department.id==cultivate.departmentId}">
+                                    ${department.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                     </tr>
                 </c:forEach>
             </table>

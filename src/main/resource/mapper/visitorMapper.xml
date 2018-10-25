@@ -9,9 +9,6 @@
         UPDATE visitor SET password=#{password} WHERE id=#{id} AND name=#{name};
     </update>
 
-    <delete id="delVisitor" parameterType="int">
-        DELETE FROM visitor WHERE id=#{id};
-    </delete>
 
     <select id="findVisitor" resultType="Visitor">
         SELECT * FROM visitor WHERE name=#{0} AND password=#{1};
@@ -23,5 +20,9 @@
 
     <select id="findVisitorByName" parameterType="String" resultType="Visitor">
         SELECT * FROM visitor WHERE name=#{name};
+    </select>
+
+    <select id="findVisitorById" resultType="Visitor">
+        SELECT * FROM visitor WHERE id=#{id};
     </select>
 </mapper>

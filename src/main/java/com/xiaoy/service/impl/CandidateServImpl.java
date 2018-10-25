@@ -37,14 +37,6 @@ public class CandidateServImpl implements CandidateServ{
         return candidateDao.findCandidateByStatus(status);
     }
 
-    public List<Candidate> findCandidateByInterview(int interview) {
-        return candidateDao.findCandidateByInterview(interview);
-    }
-
-    public List<Candidate> findCandidateByCreaTime(Date creaTime) {
-        return candidateDao.findCandidateByCreaTime(creaTime);
-    }
-
     public List<Candidate> findCandidateAll() {
         return candidateDao.findCandidateAll();
     }

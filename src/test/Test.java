@@ -14,5 +14,7 @@ public class Test {
         String mon = format.format(m);
         System.out.println(format.format(new Date()));
         System.out.println("*******"+mon);
+
+        System.out.println("人事主管".contains("经理"));
     }
 }

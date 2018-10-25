@@ -20,10 +20,6 @@ public class PositionServImpl implements PositionServ {
         return positionDao.savePosition(position);
     }
 
-    public boolean updatePosition(int id, String name) {
-        return positionDao.updatePosition(id, name);
-    }
-
     public boolean delPosition(int id) {
         return positionDao.delPosition(id);
     }

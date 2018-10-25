@@ -37,6 +37,10 @@ public class VisitorControl {
     private CultivateServ cultivateServ;
     @Autowired
     private PayObjectionServ payObjectionServ;
+    @Autowired
+    private PositionServ positionServ;
+    @Autowired
+    private DepartmentServ departmentServ;
 
     @RequestMapping("regist")
     public String regist(){
@@ -59,6 +63,29 @@ public class VisitorControl {
         }
     }
 
+    @RequestMapping("updateVerify")
+    @ResponseBody
+    public String updateVerify(int id,String name){
+        Visitor visitor=visitorServ.findVisitorById(id);
+        if(name==""){
+            return "000";
+        }
+        name=MD5.md5(name);
+        if(visitor!=null&&visitor.getPassword().equals(name)){
+            return "123";
+        }else {
+            return "456";
+        }
+    }
+
+    @RequestMapping("updatePassword.do")
+    public String updatePassword(int id,String password1){
+        Visitor visitor=visitorServ.findVisitorById(id);
+        visitor.setPassword(password1);
+        visitorServ.updateVisitor(visitor);
+        return "edit";
+    }
+
     @RequestMapping("resetPasswords.do")
     public String resetPasswords(Visitor visitor){
         visitorServ.updateVisitor(visitor);
@@ -76,9 +103,13 @@ public class VisitorControl {
         visitor.setPassword(MD5.md5(visitor.getPassword()));
         Visitor visitor1=visitorServ.findVisitor(visitor.getName(),visitor.getPassword());
         Employee employee=emploServ.findEmploById(visitor1.getId());
-        if(employee==null){
+        if(employee==null||employee.getRank()==5){
             List<Recruit> recruits=recruitServ.findAllRecruit();
             List<Feedback> feedbacks=feedbackServ.findFeedbackByVisitorIdAndStatus(visitor1.getId(),1);
+            List<Department> departments=departmentServ.findAllDepartment();
+            List<Position> positions=positionServ.findAllPosition();
+            session.setAttribute("departments",departments);
+            session.setAttribute("positions",positions);
             model.addAttribute("feedbacks",feedbacks);
             session.setAttribute("visitor",visitor1);
             session.setAttribute("recruits",recruits);
@@ -155,8 +186,31 @@ public class VisitorControl {
     @RequestMapping("visitor2")
     public String visitor2(int visitorId,ModelMap model){
         Resume resume=resumeServ.findResumeByVisitorId(visitorId);
+        List<Department> departments=departmentServ.findAllDepartment();
+        List<Position> positions=positionServ.findAllPosition();
+        model.addAttribute("departments",departments);
+        model.addAttribute("positions",positions);
         model.addAttribute("resume",resume);
         return "visitor/visitorPage2";
+    }
+
+    @RequestMapping("updateResume")
+    public String updateResume(int visitorId,ModelMap model){
+        Resume resume=resumeServ.findResumeByVisitorId(visitorId);
+        List<Department> departments=departmentServ.findAllDepartment();
+        if(departments.size()!=0){
+            List<Position> positionList=positionServ.findPositionByDepartmentId(departments.get(0).getId());
+            model.addAttribute("positionList",positionList);
+        }
+        model.addAttribute("departments",departments);
+        model.addAttribute("resume",resume);
+        return "visitor/updateResume";
+    }
+
+    @RequestMapping("updateResume.do")
+    private String updateResumeDo(Resume resume){
+        resumeServ.updateResume(resume);
+        return "visitor/visitorPage";
     }
 
     @RequestMapping("visitor4")
@@ -165,13 +219,16 @@ public class VisitorControl {
     }
 
     @RequestMapping("visitor5")
-    public String visitor5(){
+    public String visitor5(int id,ModelMap model){
+        model.addAttribute("id",id);
         return "visitor/updatePassword";
     }
 
     @RequestMapping("visitor1")
     public String visitor1(int visitorId,ModelMap model){
         List<Feedback> feedbackList=feedbackServ.findFeedbackByVisitorId(visitorId);
+        List<Recruit> recruits=recruitServ.findAllRecruit();
+        model.addAttribute("recruits",recruits);
         model.addAttribute("feedbackList",feedbackList);
         return "visitor/visitorPage1";
     }

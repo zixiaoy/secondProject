@@ -7,7 +7,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -25,7 +24,7 @@
             if(${requestScope.feedbacks!=null}&&${requestScope.feedbacks.size()!=0}){
                 alert("您有${requestScope.feedbacks.size()}条反馈消息未查看，请前往查看");
             }
-            $("#input6").click(function(){
+            $(".input6").click(function(){
                 if(${requestScope.candidate!=null}){
                     if(${requestScope.candidate=="789"}){
                         alert("已投递过，不能重复投递");
@@ -60,7 +59,7 @@
         <!--显示菜单-->
         <div id="open">
             <div class="navH">
-                <i style="color:red;font-size: 25px">当前用户：${sessionScope.visitor.name}</i>
+                <i style="color:red;font-size: 25px">${sessionScope.visitor.name}</i>
                 <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
             </div>
             <div class="navBox">
@@ -87,7 +86,7 @@
                     </li>
                     <li>
                         <h2 class="obtain" id="input5">
-                            <a href="visitor5" style="font-size:25px;color:#1acbfc">修改密码</a>
+                            <a href="visitor5?id=${sessionScope.visitor.id}" style="font-size:25px;color:#1acbfc">修改密码</a>
                         </h2>
                     </li>
                     <li>
@@ -103,7 +102,7 @@
     </div>
 
     <div style="text-align:center">
-        <h2 style="color:brown;font-size:50px;text-align:left">招聘信息：</h2><br>
+        <h2 style="color:brown;font-size:50px;text-align:left">招聘信息：<span style="font-size:25px;color:#007bff">（投递时，求职职位需与招聘职位相同，否则无法投递）</span></h2><br>
         <c:if test="${sessionScope.recruits.size()==0}">
             <span style="font-size:30px">暂无招聘信息</span>
         </c:if>
@@ -122,11 +121,30 @@
                     <tr>
                         <td>${recruit.companyName}</td>
                         <td>${recruit.companyAddress}</td>
-                        <td>${recruit.departmentId}</td>
-                        <td>${recruit.positionId}</td>
+                        <td>
+                            <c:forEach var="department" items="${sessionScope.departments}">
+                                <c:if test="${department.id==recruit.departmentId}">
+                                    ${department.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
+                        <td>
+                            <c:forEach var="position" items="${sessionScope.positions}">
+                                <c:if test="${position.id==recruit.positionId}">
+                                    ${position.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td>${recruit.basePay}</td>
-                        <td>${recruit.intro}</td>
-                        <td><a href="delivery?visitorId=${sessionScope.visitor.id}&positionId=${recruit.positionId}" id="input6">投递简历</a></td>
+                        <td>
+                            <c:if test="${recruit.intro==null}">
+                                未填写
+                            </c:if>
+                            <c:if test="${recruit.intro!=null}">
+                                ${recruit.intro}
+                            </c:if>
+                        </td>
+                        <td><a href="delivery?visitorId=${sessionScope.visitor.id}&positionId=${recruit.positionId}" class="input6">投递简历</a></td>
                     </tr>
                 </c:forEach>
             </table>

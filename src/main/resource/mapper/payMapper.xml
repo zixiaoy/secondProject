@@ -22,4 +22,8 @@
     <select id="findAllPay" resultType="Pay">
         SELECT * FROM pay;
     </select>
+
+    <select id="findPayById" resultType="Pay">
+        SELECT * FROM pay WHERE id=#{id};
+    </select>
 </mapper>

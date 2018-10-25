@@ -11,6 +11,4 @@ public interface ResumeServ {
     public boolean saveResume(Resume resume);
     public boolean updateResume(Resume resume);
     public Resume findResumeByVisitorId(int visitorId);
-    public List<Resume> findResumeByDepartmentId(int departmentId);
-    public List<Resume> findResumeByPositionId(int positionId);
 }

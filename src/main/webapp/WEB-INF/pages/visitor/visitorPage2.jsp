@@ -33,7 +33,7 @@
         <!--显示菜单-->
         <div id="open">
             <div class="navH">
-                <i style="color:red;font-size: 25px">当前用户：${sessionScope.visitor.name}</i>
+                <i style="color:red;font-size: 25px">${sessionScope.visitor.name}</i>
                 <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
             </div>
             <div class="navBox">
@@ -84,38 +84,67 @@
         <c:if test="${requestScope.resume!=null}">
             <table border="2px" cellpadding="10px" cellspacing="0" align="center">
                 <tr>
-                    <td>姓名</td>
-                    <td>年龄</td>
-                    <td>性别</td>
-                    <td>学历</td>
-                    <td>电话</td>
-                    <td>邮箱</td>
-                    <td>政治面貌</td>
-                    <td>求职部门</td>
-                    <td>应聘岗位</td>
-                    <td>期望薪资</td>
-                    <td>工作经历</td>
-                    <td>居住地址</td>
-                    <td>兴趣爱好</td>
-                    <td>特长</td>
-                    <td>个人简介</td>
+                    <td>姓名：</td>
+                    <td>${requestScope.resume.name}</td>
+                    <td>年龄：</td>
+                    <td>${requestScope.resume.age}</td>
                 </tr>
                 <tr>
-                    <td>${requestScope.resume.name}</td>
-                    <td>${requestScope.resume.age}</td>
-                    <td>${requestScope.resume.sex}</td>
+                    <td>性别：</td>
+                    <td>
+                        <c:if test="${requestScope.resume.sex==1}">
+                            男
+                        </c:if>
+                        <c:if test="${requestScope.resume.sex==2}">
+                            女
+                        </c:if>
+                    </td>
+                    <td>学历：</td>
                     <td>${requestScope.resume.education}</td>
+                </tr>
+                <tr>
+                    <td>电话：</td>
                     <td>${requestScope.resume.tel}</td>
+                    <td>邮箱：</td>
                     <td>${requestScope.resume.email}</td>
+                </tr>
+                <tr>
+                    <td>政治面貌：</td>
                     <td>${requestScope.resume.politicsStatus}</td>
-                    <td>${requestScope.resume.departmentId}</td>
-                    <td>${requestScope.resume.positionId}</td>
+                    <td>应聘岗位：</td>
+                    <td>
+                        <c:forEach var="department" items="${requestScope.departments}">
+                            <c:if test="${department.id==requestScope.resume.departmentId}">
+                                ${department.name}，
+                            </c:if>
+                        </c:forEach>
+                        <c:forEach var="position" items="${requestScope.positions}">
+                            <c:if test="${position.id==requestScope.resume.positionId}">
+                                ${position.name}
+                            </c:if>
+                        </c:forEach>
+                    </td>
+                </tr>
+                <tr>
+                    <td>期望薪资：</td>
                     <td>${requestScope.resume.expectSalary}</td>
+                    <td>工作经历：</td>
                     <td>${requestScope.resume.experience}</td>
+                </tr>
+                <tr>
+                    <td>居住地址：</td>
                     <td>${requestScope.resume.experience}</td>
+                    <td>兴趣爱好：</td>
                     <td>${requestScope.resume.interest}</td>
+                </tr>
+                <tr>
+                    <td>特长：</td>
                     <td>${requestScope.resume.speciality}</td>
+                    <td>个人简介：</td>
                     <td>${requestScope.resume.intro}</td>
+                </tr>
+                <tr>
+                    <td colspan="4"><a href="updateResume?visitorId=${requestScope.resume.visitorId}">修改简历</a></td>
                 </tr>
             </table>
         </c:if>

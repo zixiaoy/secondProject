@@ -20,10 +20,6 @@ public class DepartmentServImpl implements DepartmentServ {
         return departmentDao.saveDepartment(department);
     }
 
-    public boolean updateDepartment(int id, String name) {
-        return departmentDao.updateDepartment(id, name);
-    }
-
     public boolean delDepartment(int id) {
         return departmentDao.delDepartment(id);
     }

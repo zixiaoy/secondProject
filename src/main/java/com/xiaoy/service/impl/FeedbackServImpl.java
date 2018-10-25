@@ -29,28 +29,12 @@ public class FeedbackServImpl implements FeedbackServ {
         return feedbackDao.delFeedback(id);
     }
 
-    public List<Feedback> findFeedbackByStatus(int status) {
-        return feedbackDao.findFeedbackByStatus(status);
-    }
-
     public List<Feedback> findFeedbackByInterview(int interview) {
         return feedbackDao.findFeedbackByInterview(interview);
     }
 
-    public List<Feedback> findFeedbackByAdmit(int admit) {
-        return feedbackDao.findFeedbackByAdmit(admit);
-    }
-
-    public List<Feedback> findFeedbackByCreaTime(Date creaTime) {
-        return feedbackDao.findFeedbackByCreaTime(creaTime);
-    }
-
     public List<Feedback> findFeedbackByInterviewTime(String interviewTime,int visitorId) {
         return feedbackDao.findFeedbackByInterviewTime(interviewTime,visitorId);
-    }
-
-    public List<Feedback> findFeedbackAll() {
-        return feedbackDao.findFeedbackAll();
     }
 
     public List<Feedback> findFeedbackByVisitorId(int visitorId) {

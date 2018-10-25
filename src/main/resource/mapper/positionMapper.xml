@@ -6,10 +6,6 @@
         INSERT INTO positions(name,crea_time,department_id) VALUES(#{name},#{creaTime},#{departmentId});
     </insert>
 
-    <update id="updatePosition">
-        UPDATE positions set name=#{1} WHERE id=#{0};
-    </update>
-
     <delete id="delPosition" parameterType="int">
         DELETE FROM positions WHERE id=#{id};
     </delete>

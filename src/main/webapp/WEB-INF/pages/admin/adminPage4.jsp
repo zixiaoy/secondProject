@@ -29,19 +29,12 @@
         <h2 style="color:brown;font-size:50px;text-align:left">培训管理：</h2><br>
         <c:if test="${requestScope.cultivateList.size()==0}">
             <span style="font-size:25px">暂无培训信息。。。</span>
-            <a href="admin5" style="font-size:25px">新建培训</a>
+            <a href="addCultivate" style="font-size:25px">新建培训</a>
         </c:if>
         <c:if test="${requestScope.cultivateList.size()!=0}">
             <table border="2px" cellspacing="0" cellpadding="10px" align="center" style="font-size:25px">
                 <tr style="color: #0e1cc4">
-                    <td colspan="6">
-                        <select name="" style="color: #0e1cc4;font-size:25px">
-                            <option value="0">所有培训</option>
-                            <c:forEach var="departments" items="${requestScope.departments}">
-                                <option value="${departments.id}">${departments.name}培训</option>
-                            </c:forEach>
-                        </select>
-                    </td>
+                    <td colspan="6">所有培训</td>
                 </tr>
                 <tr style="color: #0e1cc4">
                     <td>培训名称</td>
@@ -55,7 +48,13 @@
                         <td>${cultivate.name}</td>
                         <td><f:formatDate value="${cultivate.creaTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
                         <td><f:formatDate value="${cultivate.cultivateTime}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
-                        <td>${cultivate.departmentId}</td>
+                        <td>
+                            <c:forEach var="department" items="${requestScope.departments}">
+                                <c:if test="${department.id==cultivate.departmentId}">
+                                    ${department.name}
+                                </c:if>
+                            </c:forEach>
+                        </td>
                         <td><a href="editCultivate?id=${cultivate.id}">修改</a></td>
                         <td><a href="delCultivate?id=${cultivate.id}" class="del">删除</a></td>
                     </tr>

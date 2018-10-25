@@ -9,7 +9,6 @@ import java.util.List;
  */
 public interface PositionServ {
     public boolean savePosition(Position position);
-    public boolean updatePosition(int id, String name);
     public boolean delPosition(int id);
     public Position findPositionById(int id);
     public Position findPositionByName(int departmentId,String name);

@@ -3,8 +3,8 @@
 <%--
   Created by IntelliJ IDEA.
   User: 紫青
-  Date: 2018/10/17
-  Time: 12:37
+  Date: 2018/10/20
+  Time: 19:35
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -18,6 +18,7 @@
     <script>
         $(function(){
             $("#input3").hide();
+
             $("#input1").click(function(){
                 $("#input3").show();
                 return false;
@@ -25,20 +26,14 @@
 
             $(":submit").click(function(){
                 var name=$("#input4").val();
-                if(name==""){
-                    alert("请选择面试时间");
-                    return false;
-                }
-                var date3=$("#span1").text();
-                if(Date.parse(name)-Date.parse(date3)<86400000){
-                    alert("面试只能选择今天之后的时间！！！");
+                if(name==""||name<3000){
+                    alert("请正确输入月薪");
                     return false;
                 }
             })
-
             $("#input2").click(function(){
                 $("#input3").hide();
-                var flag=confirm("确定删除此条求职者信息吗？");
+                var flag=confirm("确定不录用此位求职者吗？");
                 return flag;
             })
         })
@@ -48,10 +43,6 @@
     <jsp:include page="adminPage.jsp"></jsp:include>
     <div style="text-align:center">
         <h2 style="color:brown;font-size:50px;text-align:left">求职简历：</h2><br>
-        <span id="span1" hidden>
-                    <jsp:useBean id="now" class="java.util.Date"/>
-                    <f:formatDate value="${now}" pattern="yyyy-MM-dd" />
-                </span>
         <table border="2px" cellpadding="10px" cellspacing="0" align="center">
             <tr>
                 <td>姓名：</td>
@@ -114,14 +105,15 @@
                 <td>${requestScope.resume.intro}</td>
             </tr>
             <tr>
-                <td colspan="2"><a href="interview.do?visitorId=${requestScope.resume.visitorId}" id="input1">面试</a></td>
-                <td colspan="2"><a href="delCandidate?id=${requestScope.candidateId}" id="input2">删除</a></td>
+                <td colspan="2"><a href="addEmplo.do" id="input1">录用</a></td>
+                <td colspan="2"><a href="delFeedback?id=${requestScope.feedbackId}" id="input2">不录用</a></td>
             </tr>
             <tr id="input3">
                 <td colspan="4" style="font-size:25px">
-                    <form action="interview.do?" method="post">
-                        面试时间：<input type="date" name="interviewTime" id="input4" style="font-size:25px">&nbsp;
+                    <form action="addEmplo.do" method="post">
+                        输入月薪：<input type="number" name="basePay" id="input4" style="font-size:25px">&nbsp;
                         <input type="hidden" name="visitorId" value="${requestScope.resume.visitorId}">
+                        <input type="hidden" name="feedbackId" value="${requestScope.feedbackId}">
                         <input type="submit" style="font-size:25px">
                     </form>
                 </td>

@@ -22,14 +22,6 @@
         SELECT * FROM candidate WHERE status=#{status};
     </select>
 
-    <select id="findCandidateByInterview" resultType="Candidate">
-        SELECT * FROM candidate WHERE interview=#{interview};
-    </select>
-
-    <select id="findCandidateByCreaTime" resultType="Candidate">
-        SELECT * FROM candidate WHERE crea_time LIKE CONCAT('%',#{creaTime},'%');
-    </select>
-
     <select id="findCandidateAll" resultType="Candidate">
         SELECT * FROM candidate;
     </select>

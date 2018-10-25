@@ -15,4 +15,5 @@ public interface PayDao {
     public List<Pay> findPayByPayTime(String payTime);
     public List<Pay> findPayByPayTimeAndEmployeeId(String payTime,int employeeId);
     public List<Pay> findAllPay();
+    public Pay findPayById(int id);
 }

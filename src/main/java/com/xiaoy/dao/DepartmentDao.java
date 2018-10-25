@@ -11,7 +11,6 @@ import java.util.List;
 @Repository
 public interface DepartmentDao {
     public boolean saveDepartment(Department department);
-    public boolean updateDepartment(int id,String name);
     public boolean delDepartment(int id);
     public Department findDepartmentById(int id);
     public List<Department> findAllDepartment();

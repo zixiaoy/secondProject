@@ -35,4 +35,8 @@ public class PayServImpl implements PayServ {
     public List<Pay> findAllPay() {
         return payDao.findAllPay();
     }
+
+    public Pay findPayById(int id) {
+        return payDao.findPayById(id);
+    }
 }

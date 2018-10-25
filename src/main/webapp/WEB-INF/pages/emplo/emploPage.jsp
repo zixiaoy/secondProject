@@ -8,7 +8,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
-<html>
+
 <head>
     <title>员工界面</title>
 
@@ -78,7 +78,7 @@
                     </li>
                     <li>
                         <h2 class="obtain">
-                            <a href="javascript:void(0)" style="color:#1acbfc">部门职位</a>
+                            <a href="emplo3" style="color:#1acbfc">部门职位</a>
                         </h2>
                     </li>
                     <li>
@@ -98,7 +98,7 @@
                     </li>
                     <li>
                         <h2 class="obtain">
-                            <a href="emplo7?id=${sessionScope.emplo.id}" style="color:#1acbfc">修改密码</a>
+                            <a href="visitor5?id=${sessionScope.emplo.id}" style="color:#1acbfc">修改密码</a>
                         </h2>
                     </li>
                     <li>

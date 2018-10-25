@@ -32,7 +32,7 @@
     <!--显示菜单-->
     <div id="open">
         <div class="navH">
-            <i style="color:red;font-size: 25px">当前用户：${sessionScope.visitor.name}</i>
+            <i style="color:red;font-size: 25px">${sessionScope.visitor.name}</i>
             <span><img class="obscure" src="/plugIn/images/obscure.jpg"></span>
         </div>
         <div class="navBox">

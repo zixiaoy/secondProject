@@ -20,6 +20,6 @@
     </select>
 
     <select id="findPayObjectionByPayId" resultType="PayObjection">
-        SELECT * FROM pay_objection WHERE pay_id=#{payId});
+        SELECT * FROM pay_objection WHERE pay_id=#{payId};
     </select>
 </mapper>

@@ -15,28 +15,12 @@
         DELETE FROM feedback WHERE id=#{id};
     </delete>
 
-    <select id="findFeedbackByStatus" resultType="Feedback">
-        SELECT * FROM feedback WHERE status=#{status};
-    </select>
-
     <select id="findFeedbackByInterview" resultType="Feedback">
         SELECT * FROM feedback WHERE interview=#{interview};
     </select>
 
-    <select id="findFeedbackByAdmit" resultType="Feedback">
-        SELECT * FROM feedback WHERE admit=#{admit};
-    </select>
-
-    <select id="findFeedbackByCreaTime" resultType="Feedback">
-        SELECT * FROM feedback WHERE crea_time=#{creaTime};
-    </select>
-
     <select id="findFeedbackByInterviewTime" resultType="Feedback">
         SELECT * FROM feedback WHERE interview_time LIKE CONCAT ('%',#{0},'%') AND visitor_id=#{1};
-    </select>
-
-    <select id="findFeedbackAll" resultType="Feedback">
-        SELECT * FROM feedback;
     </select>
 
     <select id="findFeedbackByVisitorId" resultType="Feedback">

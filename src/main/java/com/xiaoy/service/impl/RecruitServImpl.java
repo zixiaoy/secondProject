@@ -20,10 +20,6 @@ public class RecruitServImpl implements RecruitServ {
         return recruitDao.saveRecruit(recruit);
     }
 
-    public boolean updateRecruit(Recruit recruit) {
-        return recruitDao.updateRecruit(recruit);
-    }
-
     public boolean delRecruit(int id) {
         return recruitDao.delRecruit(id);
     }
@@ -34,10 +30,6 @@ public class RecruitServImpl implements RecruitServ {
 
     public Recruit findRecruitByPositionId(int positionId) {
         return recruitDao.findRecruitByPositionId(positionId);
-    }
-
-    public List<Recruit> findRecruitByCompanyAddress(String companyAddress) {
-        return recruitDao.findRecruitByCompanyAddress(companyAddress);
     }
 
     public List<Recruit> findAllRecruit() {
